@@ -38,7 +38,7 @@
         .ux-title {
             font-size: 1.5rem;
             font-weight: 500;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .ux-text {
@@ -143,6 +143,14 @@
             background-color: #fff;
             color: #3b8193;
         }
+        .custom-line {
+            width: 90%; /* Πλάτος της γραμμής */
+            margin: 20px auto; /* Κεντραρισμένη και απόσταση από τα υπόλοιπα στοιχεία */
+            border: 0;
+            height: 3px; /* Πάχος της γραμμής */
+            background: linear-gradient(to right, #3b8193, #5fb4c1); /* Gradient styling */
+            border-radius: 10px; /* Στρογγυλεμένες άκρες */
+        }
     </style>
 </head>
 <!-- Navigation Bar -->
@@ -173,14 +181,15 @@
             <p class="section-subtitle">
                 You can connect all your bills in a single application and manage your payments quickly and easily.
             </p>
+            <hr class="custom-line">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center">
-                    <h4 class="ux-title">🔑 Log in Once</h4>
+                    <h4 class="ux-title"> Log in Once</h4>
                     <p class="ux-text">Connect all your billing accounts seamlessly.</p>
                     <img src="log.png" alt="Login Once" class="ux-img">
                 </div>
                 <div class="col-md-6 text-center">
-                    <h4 class="ux-title">📅 Ready to Pay & Schedule</h4>
+                    <h4 class="ux-title"> Ready to Pay & Schedule</h4>
                     <p class="ux-text">Easily manage and automate your payments.</p>
                     <img src="home.png" alt="Schedule & Pay" class="ux-img">
                 </div>
