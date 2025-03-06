@@ -151,6 +151,62 @@
             background: linear-gradient(to right, #3b8193, #5fb4c1); /* Gradient styling */
             border-radius: 10px; /* Στρογγυλεμένες άκρες */
         }
+        /* 🔥 Animations for images */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 🔥 Smooth fade-in effect */
+        .animated {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Ενεργοποιείται όταν το στοιχείο είναι ορατό */
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 🔥 Hover animation on images */
+        .ux-img, .solution-img {
+            transition: transform 0.3s ease-out;
+        }
+        .ux-img:hover, .solution-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* 🔥 Wiggle effect on team members */
+        .team-card img {
+            transition: transform 0.3s ease-out;
+        }
+        .team-card:hover img {
+            transform: rotate(-5deg);
+        }
+
+        /* 🔥 Button hover effect */
+        .btn-primary:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 🔥 Sliding effect */
+        .slide-in {
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+        .slide-in.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <!-- Navigation Bar -->
@@ -179,13 +235,13 @@
         <div class="container">
             <h2 class="section-title">With neobill</h2>
             <p class="section-subtitle">
-                You can connect all your bills in a single application and manage your payments quickly and easily.
+                You can connect all your bills in a single application and pay in just 3 steps.
             </p>
             <hr class="custom-line">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center">
                     <h4 class="ux-title"> Log in Once</h4>
-                    <p class="ux-text">Connect all your billing accounts seamlessly.</p>
+                    <p class="ux-text">Connect all your billing accounts <b>once</b> <br>when you download neobill.</p>
                     <img src="log.png" alt="Login Once" class="ux-img">
                 </div>
                 <div class="col-md-6 text-center">
@@ -313,6 +369,23 @@
                     scrollTop: $("#user-experience").offset().top
                 }, 700); // 800ms for smooth effect
             });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.animated, .slide-in');
+    
+            function handleScroll() {
+                elements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.85) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+    
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Execute on load
         });
     </script>
     <script>
