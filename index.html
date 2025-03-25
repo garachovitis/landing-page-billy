@@ -8,198 +8,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .ux-img {
-            width: 63%;
-            max-width: 250px;
-            margin-bottom: 15px;
-        }
-        .ux-title {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-top: 5px;
-        }
-        .ux-text {
-            font-size: 1rem;
-            color: #555;
-            max-width: 80%;
-            margin: 0 auto;
-        }
-        .hero {
-            height: 100vh;
-            background: linear-gradient(to right, #3b8193, #5fb4c1);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .allinone-img {
-            width: 60%;
-            max-width: 400px;
-            display: block;
-            margin: 0 auto;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-        }
-        .btn-primary {
-            background: #0a194f;
-            border: none;
-            padding: 10px 25px;
-            font-size: 1.2rem;
-            border-radius: 100px;
-            transition: 0.3s;
-        }
-        .btn-primary:hover {
-            background: #a9c6ca;
-        }
-        .section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .section img {
-            max-width: 100%;
-            height: auto;
-        }
-        .team-card {
-            border-radius: 10px;
-            padding: 20px;
-            transition: 0.3s;
-            margin-bottom: 20px;
-            height: 95%;
-            text-align: center;
-        }
-        .team-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-        .team-card:hover {
-            transform: translateY(-5px);
-        }
-        .solution-img {
-            width: 300px;
-            height: 200px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-        .solution-card {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .bg-primary {
-            border-radius: 20px 20px 0 0;
-            background-color: #5fb4c1 !important;
-            
-        }
-
-        #notify-form {
-            max-width: 500px;
-            margin: 0 auto;
-            border-radius: 300px;
-        }
-        #email-input {
-            flex: 1;
-            padding: 10px;
-            border-radius: 20px;
-            border: none;
-        }
-        .btn-light {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: 0.3s;
-        }
-        .btn-light:hover {
-            background-color: #fff;
-            color: #3b8193;
-        }
-        .custom-line {
-            width: 90%;
-            margin: 20px auto;
-            border: 0;
-            height: 3px;
-            background: linear-gradient(to right, #3b8193, #5fb4c1);
-            border-radius: 10px;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animated {
-            opacity: 0;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .ux-img, .solution-img {
-            transition: transform 0.3s ease-out;
-        }
-        .ux-img:hover, .solution-img:hover {
-            transform: scale(1.1);
-        }
-        .team-card img {
-            transition: transform 0.3s ease-out;
-        }
-        .team-card:hover img {
-            transform: rotate(-5deg);
-        }
-        .btn-primary:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        .slide-in {
-            transform: translateX(-50px);
-            opacity: 0;
-            transition: all 0.6s ease-out;
-        }
-        .slide-in.visible {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<!-- Navigation Bar -->
 
 <body>
-
-    <!-- Hero Section -->
     <section class="hero">
         <img src="neobill.png" alt="Neobill Logo" width="180">
-                <h2>All your bills linked together</h2>
+        <h2>All your bills linked together</h2>
         <p class="lead">Manage, Pay, and Schedule Bills Easily</p>
         <button class="btn btn-primary">Get Started</button>
     </section>
-    <!-- Image Section -->
+    
     <section class="section">
         <div class="container">
             <h2>All Your Bills in One App</h2>
@@ -207,30 +26,18 @@
                 <img src="allinone.gif" alt="App Interface" class="allinone-img">
             </a>
         </div>
-        
     </section>
-    <!-- User Experience -->
-    <section id="user-experience" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">With neobill</h2>
-            <p class="section-subtitle">
-                You can connect all your bills in a single application and pay in just 3 steps.
-            </p>
-            <hr class="custom-line">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center">
-                    <h4 class="ux-title"> Log in Once</h4>
-                    <p class="ux-text">Connect all your billing accounts <b>once</b> when you download neobill.</p>
-                    <img src="log.png" alt="Login Once" class="ux-img">
-                </div>
-                <div class="col-md-6 text-center">
-                    <h4 class="ux-title"> Ready to Pay & Schedule</h4>
-                    <p class="ux-text">Easily manage and automate your payments.</p>
-                    <img src="home.png" alt="Schedule & Pay" class="ux-img">
-                </div>
-            </div>
+    <section id="user-experience" class="section bg-white py-5">
+        <div class="container text-center">
+          <h2 class="section-title mb-3" style="font-weight: 500; font-size: 2rem;">With neobill </h2>
+          <p class="section-subtitle mb-4" style="max-width: 600px; margin: 0 auto; color: #444;">
+            You can connect all your bills in a single application and pay in just 3 steps.</p>
+          <div class="ui">
+            <img src="ui_pro.png" alt="App Interface" class="img-fluid w-100" >
+          </div>
         </div>
     </section>
+    
     <!-- Solution Section -->
     <section class="section bg-light">
         <div class="container">
@@ -240,37 +47,37 @@
                 <div class="col">
                     <div class="solution-card">
                         <img src="save_bills.png" alt="Save Paid Bills" class="solution-img">
-                        <h4>📁 Save Paid Bills</h4>
+                        <h4>Save Paid Bills</h4>
                     </div>
                 </div>
                 <div class="col">
                     <div class="solution-card">
                         <img src="categ.png" alt="Schedule Payments" class="solution-img">
-                        <h4>📊 Categorize Expenses</h4>
+                        <h4>Categorize Expenses</h4>
                     </div>
                 </div>
                 <div class="col">
                     <div class="solution-card">
                         <img src="overdue_notifications.png" alt="Overdue Notifications" class="solution-img">
-                        <h4>🔔 Get Overdue Notifications</h4>
+                        <h4>Get Overdue Notifications</h4>
                     </div>
                 </div>
                 <div class="col">
                     <div class="solution-card">
                         <img src="secure_payments.png" alt="Secure Payments" class="solution-img">
-                        <h4>💳 Pay in-app</h4>
+                        <h4>Pay in-app</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
 
     <section class="section bg-primary text-white">
         <div class="container text-center">
             <h2 class="section-title">Stay Updated!</h2>
             <p class="section-subtitle">Be the first to know when <strong>neobill</strong> launches. Enter your email below to get notified.</p>
-            
-            <!-- ✅ ΝΕΑ Google Form -->
+            <p class="section-subtitle">Google forms</p>
             <form id="notify-form" class="d-flex justify-content-center"
                 action="https://docs.google.com/forms/d/e/1FAIpQLSdaiULTDLo7OEo_p2IZLjdABnU_9qekUGy5cjxgSEbu1U2I0w/formResponse"
                 method="POST" target="_blank">
@@ -278,60 +85,10 @@
                 <input type="email" name="entry.1234567890" id="email-input" class="form-control me-2" placeholder="Enter your email" required>
                 <button type="submit" class="btn btn-light">Notify Me</button>
             </form>
-    
             <p id="success-message" class="mt-3 text-light" style="display: none;">Thank you! You'll be notified when we launch.</p>
         </div>
     </section>
-
-    <!-- Who We Are
-    <section class="section">
-        <div class="container">
-            <h2>Who We Are</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="team-card bg-light">
-                        <a href="https://www.linkedin.com/in/georgios-arachovitis/" target="_blank">
-                            <img src="person1.png" alt="Founder">
-                        </a>
-                        <h5>Founder</h5>
-                        <p>Electrical & Computer Engineering<br> Student</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="team-card bg-light">
-                        <a href="https://www.linkedin.com/in/vasileia-kalogerakou-0a594326a/" target="_blank">
-                            <img src="person2.png" alt="Marketing">
-                        </a>
-                        <h5>Marketing</h5>
-                        <p>Biotechnologist MSci</p>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="team-card bg-light">
-                        <a href="https://www.linkedin.com/in/stylianos-theofilou-976ab923b/" target="_blank">
-                            <img src="person3.png" alt="CTO">
-                        </a>
-                        <h5>CTO</h5>
-                        <p>Electrical & Computer Engineering <br>Student</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="team-card bg-light">
-                        <a href="https://www.linkedin.com/in/myron-giannakis/" target="_blank">
-                            <img src="person4.png" alt="Developer">
-                        </a>
-                        <h5>Back-End Developer</h5>
-                        <p>Electrical & Computer Engineer MSci</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Footer -->
-
-
-
+    
     <footer class="text-center py-4 bg-dark text-light">
         <p>© 2025 <strong>neobill</strong>. All Rights Reserved. </p>
     </footer>
@@ -344,9 +101,8 @@
                 }, 800);
             });
         });
-
-
     </script>
+    
     <script>
         $(document).ready(function(){
             $("#scroll-down").click(function(e){
@@ -357,6 +113,7 @@
             });
         });
     </script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const elements = document.querySelectorAll('.animated, .slide-in');
@@ -371,16 +128,15 @@
             }
     
             window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Execute on load
+            handleScroll(); 
         });
     </script>
 
     <script>
         document.getElementById("notify-form").addEventListener("submit", function(event) {
             document.getElementById("success-message").style.display = "block";
-            document.getElementById("email-input").value = ""; // Καθαρίζει το πεδίο μετά την υποβολή
+            document.getElementById("email-input").value = ""; 
         });
     </script>
-    
 </body>
 </html>
