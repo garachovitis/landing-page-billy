@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+
+      
 </head>
 
 <body>
@@ -29,51 +31,86 @@
     </section>
     <section id="user-experience" class="section bg-white py-5">
         <div class="container text-center">
-          <h2 class="section-title mb-3" style="font-weight: 500; font-size: 2rem;">With neobill </h2>
-          <p class="section-subtitle mb-4" style="max-width: 600px; margin: 0 auto; color: #444;">
-            You can connect all your bills in a single application and pay in just 3 steps.</p>
+        <div class="ui">
+            <img src="with_neob.png" alt="App Interface" class="img-fluid w-100" >
+        </div>
+
           <div class="ui">
             <img src="ui_pro.png" alt="App Interface" class="img-fluid w-100" >
           </div>
         </div>
     </section>
     
-    <!-- Solution Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <h2>What else?</h2>
-            <p>You can also:</p>
-            <div class="row mt-4 row-cols-md-2 row-cols-1">
-                <div class="col">
-                    <div class="solution-card">
-                        <img src="save_bills.png" alt="Save Paid Bills" class="solution-img">
-                        <h4>Save Paid Bills</h4>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="solution-card">
-                        <img src="categ.png" alt="Schedule Payments" class="solution-img">
-                        <h4>Categorize Expenses</h4>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="solution-card">
-                        <img src="overdue_notifications.png" alt="Overdue Notifications" class="solution-img">
-                        <h4>Get Overdue Notifications</h4>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="solution-card">
-                        <img src="secure_payments.png" alt="Secure Payments" class="solution-img">
-                        <h4>Pay in-app</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
 
-    <section class="section bg-primary text-white">
+    <section id="neobill-showcase" class="position-relative text-white">
+      <div id="neobillCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner h-100">
+
+          <div class="carousel-item active h-100 position-relative">
+            <video class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" autoplay loop muted playsinline>
+              <source src="track.mp4" type="video/mp4" />
+            </video>
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center position-relative z-1">
+            </div>
+          </div>
+
+          <div class="carousel-item h-100 position-relative">
+            <video class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" autoplay loop muted playsinline>
+              <source src="save.mp4" type="video/mp4" />
+            </video>
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center position-relative z-1">
+            </div>
+          </div>
+
+          <div class="carousel-item h-100 position-relative">
+            <video class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" autoplay loop muted playsinline>
+              <source src="catego.mp4" type="video/mp4" />
+            </video>
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center position-relative z-1">
+            </div>
+          </div>
+          <div class="carousel-item h-100 position-relative">
+            <video class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" autoplay loop muted playsinline>
+              <source src="overdue.mp4" type="video/mp4" />
+            </video>
+            <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center position-relative z-1">
+            </div>
+          </div>
+          
+
+        </div>
+
+        <!-- Navigation Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#neobillCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#neobillCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+        <!-- Tab-style buttons -->
+        <div class="custom-carousel-buttons">
+          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="0">
+            <span class="label">Track</span>
+            <div class="progress-bar"></div>
+          </button>
+          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="1">
+            <span class="label">Save</span>
+            <div class="progress-bar"></div>
+          </button>
+          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="2">
+            <span class="label">Categories</span>
+            <div class="progress-bar"></div>
+          </button>
+          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="3">
+            <span class="label">Overdue</span>
+            <div class="progress-bar"></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-primary text-white" style="padding-top: 30px;">
         <div class="container text-center">
             <h2 class="section-title">Stay Updated!</h2>
             <p class="section-subtitle">Be the first to know when <strong>neobill</strong> launches. Enter your email below to get notified.</p>
@@ -88,6 +125,7 @@
             <p id="success-message" class="mt-3 text-light" style="display: none;">Thank you! You'll be notified when we launch.</p>
         </div>
     </section>
+    
     
     <footer class="text-center py-4 bg-dark text-light">
         <p>© 2025 <strong>neobill</strong>. All Rights Reserved. </p>
@@ -136,6 +174,49 @@
         document.getElementById("notify-form").addEventListener("submit", function(event) {
             document.getElementById("success-message").style.display = "block";
             document.getElementById("email-input").value = ""; 
+        });
+    </script>
+    
+    <script>
+        const indicators = document.querySelectorAll('.progress-btn');
+        const carousel = document.querySelector('#neobillCarousel');
+        let interval;
+
+        function activateIndicator(index) {
+            indicators.forEach((btn, i) => {
+                btn.classList.remove('active');
+                btn.querySelector('.progress-bar').style.width = '0%';
+                if (i === index) {
+                    btn.classList.add('active');
+                    setTimeout(() => {
+                        btn.querySelector('.progress-bar').style.width = '100%';
+                    }, 50);
+                }
+            });
+        }
+
+        function initCarouselProgress() {
+            const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+            activateIndicator(activeIndex);
+            clearInterval(interval);
+            interval = setInterval(() => {
+                const next = (activeIndex + 1) % indicators.length;
+                carousel.querySelector('.carousel-control-next').click();
+            }, 5000);
+        }
+
+        document.querySelectorAll('[data-bs-slide-to]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTimeout(initCarouselProgress, 100);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarouselProgress();
+        });
+        carousel.addEventListener('slid.bs.carousel', () => {
+            const newIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+            activateIndicator(newIndex);
         });
     </script>
 </body>
