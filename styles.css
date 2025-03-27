@@ -377,3 +377,13 @@
         transform: none !important;
     }
 }
+
+@media (max-width: 768px) {
+    #user-experience .ui img {
+        width: 100% !important;
+        width: 95vw !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
