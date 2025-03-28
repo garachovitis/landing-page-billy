@@ -63,7 +63,7 @@
             <div class="container h-100 d-flex flex-column justify-content-center position-relative z-1">
               <div class="row align-items-center justify-content-center w-100">
                 <div class="col-md-6 text-end">
-                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-7rem);">
+                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-4.5rem);">
                     <span style="display: inline-block;">Live Track Your Bills</span><br>
                   </h2>
                 </div>
@@ -101,7 +101,7 @@
             <div class="container h-100 d-flex flex-column justify-content-center position-relative z-1">
               <div class="row align-items-center justify-content-center w-100">
                 <div class="col-md-6 text-end">
-                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-7rem);">
+                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-1.5rem);">
                     <span style="display: inline-block;">Categorize</span>
                   </h2>
                 </div>
@@ -132,7 +132,6 @@
 
         </div>
 
-        <!-- Navigation Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#neobillCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </button>
@@ -140,7 +139,6 @@
           <span class="carousel-control-next-icon"></span>
         </button>
 
-        <!-- Tab-style buttons -->
         <div class="custom-carousel-buttons " style="flex-wrap: nowrap; justify-content: center;">
           <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="0">
             <span class="label">Track</span>
@@ -170,7 +168,6 @@
             <form id="notify-form" class="d-flex justify-content-center"
                 action="https://docs.google.com/forms/d/e/1FAIpQLSdaiULTDLo7OEo_p2IZLjdABnU_9qekUGy5cjxgSEbu1U2I0w/formResponse"
                 method="POST" target="_blank">
-                <!-- Αλλαγή σε σωστό entry ID -->
                 <input type="email" name="entry.1234567890" id="email-input" class="form-control me-2" placeholder="Enter your email" required>
                 <button type="submit" class="btn btn-light">Notify Me</button>
             </form>
@@ -236,23 +233,33 @@
 
         function activateIndicator(index) {
             indicators.forEach((btn, i) => {
-                btn.classList.remove('active');
                 const bar = btn.querySelector('.progress-bar');
+                btn.classList.remove('active');
+                bar.style.transition = 'none';
                 bar.style.width = '0%';
             });
 
             const currentBtn = indicators[index];
             const currentBar = currentBtn.querySelector('.progress-bar');
             currentBtn.classList.add('active');
+
+            // Trigger reflow to ensure transition occurs
+            void currentBar.offsetWidth;
+
             currentBar.style.transition = 'width 5s linear';
             currentBar.style.width = '100%';
         }
 
         function initCarouselProgress() {
-            const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+            let activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
             activateIndicator(activeIndex);
+
             clearInterval(interval);
             interval = setInterval(() => {
+                const items = carousel.querySelectorAll('.carousel-item');
+                activeIndex = [...items].findIndex(item => item.classList.contains('active'));
+                const next = (activeIndex + 1) % items.length;
+
                 carousel.querySelector('.carousel-control-next').click();
             }, 5000);
         }
