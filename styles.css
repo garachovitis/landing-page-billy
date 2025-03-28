@@ -44,8 +44,8 @@
     margin-top: -20px;
 }
 .allinone-img {
-    width: 60%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 100px;
     display: block;
     margin: 0 auto;
 }
@@ -401,6 +401,17 @@
       padding: 10px;
       z-index: 2;
 }
+.with-neob-overlay h3 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: normal;
+}
+.with-neob-overlay p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 10px;
+}
 
 .with-neob-container {
       position: relative;
@@ -484,4 +495,16 @@
     color: #333;
     margin-bottom: 5px;
     font-weight: normal;
+}
+@media (max-width: 768px) {
+
+  .with-neob-overlay p {
+    font-size: 1rem;
+  }
+  .with-neob-overlay h3 {
+    font-size: 1.5rem;
+  }
+  .ui-overlay-container .ui-overlay-title {
+    font-size: 1.5rem;
+  }
 }
