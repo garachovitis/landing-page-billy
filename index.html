@@ -20,23 +20,28 @@
         <p class="lead">Manage, Pay, and Schedule Bills Easily</p>
         <button class="btn btn-primary">Get Started</button>
     </section>
-    
-    <section class="section">
-        <div class="container">
-            <h2>All Your Bills in One App</h2>
-            <a href="#user-experience" id="scroll-down">
-                <img src="allinone.gif" alt="App Interface" class="allinone-img">
-            </a>
-        </div>
+
+    <section class="section text-center">
+        <h3 class="ui-overlay-title">All Your Bills in One App</h3>
+        <img src="allinone.gif" alt="App Interface" class="allinone-img">
+        <a href="#user-experience" id="scroll-down"></a>
     </section>
+    
     <section id="user-experience" class="section bg-white py-5">
-        <div class="text-center" style="width: 100vw; max-width: 100%; margin: 0 auto;">
-        <div class="ui">
-            <img src="with_neob.png" alt="App Interface" class="img-fluid w-100" >
-        </div>
+        <div class="centered-section">
+          <div class="with-neob-container">
+            <div class="with-neob-overlay">
+              <h3 class="overlay-title">With neobill</h3>
+              <p class="overlay-text">You can connect all your bills in a single application<br> and pay in just 3 steps.</p>
+            </div>
+            <img src="with_neob.png" alt="App Interface" class="img-fluid with-neob-img" >
+          </div>
 
           <div class="ui">
-            <img src="ui_pro.png" alt="App Interface" class="img-fluid w-100" >
+            <div class="ui-overlay-container">
+              <h3 class="ui-overlay-title">What you have to do?</h3>
+              <img src="ui_pro.png" alt="App Interface" class="img-fluid w-100">
+            </div>
           </div>
         </div>
     </section>
@@ -232,14 +237,15 @@
         function activateIndicator(index) {
             indicators.forEach((btn, i) => {
                 btn.classList.remove('active');
-                btn.querySelector('.progress-bar').style.width = '0%';
-                if (i === index) {
-                    btn.classList.add('active');
-                    setTimeout(() => {
-                        btn.querySelector('.progress-bar').style.width = '100%';
-                    }, 50);
-                }
+                const bar = btn.querySelector('.progress-bar');
+                bar.style.width = '0%';
             });
+
+            const currentBtn = indicators[index];
+            const currentBar = currentBtn.querySelector('.progress-bar');
+            currentBtn.classList.add('active');
+            currentBar.style.transition = 'width 5s linear';
+            currentBar.style.width = '100%';
         }
 
         function initCarouselProgress() {
@@ -247,7 +253,6 @@
             activateIndicator(activeIndex);
             clearInterval(interval);
             interval = setInterval(() => {
-                const next = (activeIndex + 1) % indicators.length;
                 carousel.querySelector('.carousel-control-next').click();
             }, 5000);
         }
