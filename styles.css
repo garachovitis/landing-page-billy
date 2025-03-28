@@ -1,6 +1,13 @@
 .body {
     font-family: 'Poppins', sans-serif;
 }
+
+@media (max-width: 768px) {
+  .section.text-center h3.ui-overlay-title-2 {
+    padding-bottom: 5px;
+    font-size: 1.4rem;
+  }
+}
 .section-title {
     font-size: 2.2rem;
     color: #333;
@@ -430,6 +437,7 @@
       .with-neob-container {
         width: 95vw;
       }
+
   }
 
 .centered-section {
