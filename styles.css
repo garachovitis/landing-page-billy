@@ -206,6 +206,10 @@
 .object-fit-cover {
     object-fit: cover;
 }
+.carousel-item video {
+    display: block;
+    background-color: #000;
+}
 .custom-carousel-indicators {
     position: absolute;
     bottom: 20px;
@@ -517,4 +521,3 @@
     font-size: 1.1rem;
   }
 }
-
