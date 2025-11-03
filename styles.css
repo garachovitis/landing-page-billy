@@ -300,6 +300,26 @@
     }
     .partner-card {
         padding: 32px 24px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .partner-title {
+        font-size: 2rem;
+    }
+    .partner-copy {
+        text-align: center;
+    }
+    .partner-audience {
+        justify-content: center;
+        gap: 6px 12px;
+    }
+    .partner-form {
+        width: 100%;
+        padding: 28px 24px;
+        text-align: center;
+    }
+    .partner-highlight {
+        text-align: center;
     }
     .partner-audience {
         padding-top: 20px;
