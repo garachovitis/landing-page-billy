@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>neobill support</title>
+    <link rel="icon" href="../logocol.png" type="image/png">
+    <link rel="stylesheet" href="./support.css">
+</head>
+<body data-embed="0" data-mode="light" data-support-api-base-url="https://backend-neobill.onrender.com">
+    <main class="support-shell">
+        <section class="support-card" aria-labelledby="support-title">
+            <button type="button" id="close-button" class="close-button" aria-label="Κλείσιμο">
+                x
+            </button>
+
+            <p class="support-brand">neobill support</p>
+            <h1 id="support-title" class="support-title">Επικοινωνία</h1>
+            <p class="support-subtitle">
+                Περίγραψε μας το πρόβλημα σου ή ότι άλλο χρειάζεσαι.
+            </p>
+
+            <form id="support-form" novalidate>
+                <label class="field-label" for="email">Mail</label>
+                <input
+                    id="email"
+                    class="text-input"
+                    type="email"
+                    inputmode="email"
+                    autocomplete="email"
+                    autocapitalize="none"
+                    placeholder="name@example.com"
+                >
+                <p id="email-error" class="error-text" hidden>Βάλε έγκυρο email.</p>
+
+                <label class="field-label" for="message">Κείμενο</label>
+                <textarea
+                    id="message"
+                    class="text-input text-area"
+                    placeholder="Γράψε το αίτημά σου..."
+                ></textarea>
+
+                <div class="helper-row" aria-live="polite">
+                    <p id="remaining-words" class="helper-text">Απομένουν 100 λέξεις</p>
+                    <p id="word-count" class="helper-text">0/100</p>
+                </div>
+                <p id="message-error" class="error-text" hidden>
+                    Το μήνυμα πρέπει να έχει από 1 έως 100 λέξεις.
+                </p>
+
+                <p id="status-message" class="status-message" hidden></p>
+
+                <div class="actions">
+                    <button id="cancel-button" type="button" class="secondary-button">
+                        Ακύρο
+                    </button>
+                    <button id="submit-button" type="submit" class="primary-button">
+                        Αποστολή
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const MAX_MESSAGE_WORDS = 100;
+            const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const searchParams = new URLSearchParams(window.location.search);
+
+            const mode = searchParams.get('mode') === 'dark' ? 'dark' : 'light';
+            const embed = searchParams.get('embed') === '1';
+            const source = (searchParams.get('source') || 'landing-support').trim();
+            const requestedApiBaseUrl = (searchParams.get('apiBaseUrl') || '').trim();
+            const fallbackApiBaseUrl = (document.body.dataset.supportApiBaseUrl || '').trim();
+            const apiBaseUrl = (requestedApiBaseUrl || fallbackApiBaseUrl || window.location.origin).replace(/\/+$/, '');
+
+            document.body.dataset.mode = mode;
+            document.body.dataset.embed = embed ? '1' : '0';
+
+            const form = document.getElementById('support-form');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const emailError = document.getElementById('email-error');
+            const messageError = document.getElementById('message-error');
+            const remainingWords = document.getElementById('remaining-words');
+            const wordCount = document.getElementById('word-count');
+            const statusMessage = document.getElementById('status-message');
+            const submitButton = document.getElementById('submit-button');
+            const cancelButton = document.getElementById('cancel-button');
+            const closeButton = document.getElementById('close-button');
+
+            let emailTouched = false;
+            let messageTouched = false;
+            let hasSubmitted = false;
+            let isSubmitting = false;
+
+            function countWords(value) {
+                const trimmedValue = value.trim();
+
+                if (!trimmedValue) {
+                    return 0;
+                }
+
+                return trimmedValue.split(/\s+/).length;
+            }
+
+            function isValidEmail(value) {
+                return EMAIL_REGEX.test(value.trim());
+            }
+
+            function postBridgeMessage(payload) {
+                if (
+                    window.ReactNativeWebView
+                    && typeof window.ReactNativeWebView.postMessage === 'function'
+                ) {
+                    window.ReactNativeWebView.postMessage(JSON.stringify(payload));
+                }
+            }
+
+            function closeSupportView() {
+                if (
+                    window.ReactNativeWebView
+                    && typeof window.ReactNativeWebView.postMessage === 'function'
+                ) {
+                    postBridgeMessage({ type: 'close' });
+                    return;
+                }
+
+                if (window.history.length > 1) {
+                    window.history.back();
+                    return;
+                }
+
+                window.location.href = '/';
+            }
+
+            function setFieldError(field, shouldShowError) {
+                field.classList.toggle('input-error', shouldShowError);
+            }
+
+            function updateWordCounter() {
+                const totalWords = countWords(messageInput.value);
+                const remaining = MAX_MESSAGE_WORDS - totalWords;
+
+                if (remaining >= 0) {
+                    remainingWords.textContent = 'Απομένουν ' + remaining + ' λέξεις';
+                } else {
+                    remainingWords.textContent = 'Υπέρβαση ' + Math.abs(remaining) + ' λέξεων';
+                }
+
+                wordCount.textContent = totalWords + '/' + MAX_MESSAGE_WORDS;
+                remainingWords.classList.toggle('helper-text-error', remaining < 0);
+                wordCount.classList.toggle('helper-text-error', remaining < 0);
+            }
+
+            function resetStatusMessage() {
+                statusMessage.hidden = true;
+                statusMessage.textContent = '';
+                statusMessage.className = 'status-message';
+            }
+
+            function updateFormState() {
+                const emailValue = emailInput.value.trim();
+                const messageValue = messageInput.value.trim();
+                const totalWords = countWords(messageValue);
+                const emailValid = isValidEmail(emailValue);
+                const messageValid = totalWords > 0 && totalWords <= MAX_MESSAGE_WORDS;
+                const showEmailError = (hasSubmitted || emailTouched) && !emailValid;
+                const showMessageError = (hasSubmitted || messageTouched) && !messageValid;
+                const canSubmit = emailValid && messageValid && !isSubmitting;
+
+                setFieldError(emailInput, showEmailError);
+                setFieldError(messageInput, showMessageError);
+
+                emailError.hidden = !showEmailError;
+                messageError.hidden = !showMessageError;
+                submitButton.disabled = !canSubmit;
+                submitButton.classList.toggle('primary-button-disabled', !canSubmit);
+                submitButton.textContent = isSubmitting ? 'Αποστολή...' : 'Αποστολή';
+
+                updateWordCounter();
+
+                return {
+                    canSubmit,
+                    email: emailValue,
+                    message: messageValue,
+                };
+            }
+
+            async function handleSubmit(event) {
+                event.preventDefault();
+                hasSubmitted = true;
+                resetStatusMessage();
+
+                const state = updateFormState();
+                if (!state.canSubmit) {
+                    return;
+                }
+
+                isSubmitting = true;
+                updateFormState();
+
+                try {
+                    const response = await fetch(apiBaseUrl + '/support/request', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: state.email,
+                            message: state.message,
+                            source: source,
+                        }),
+                    });
+
+                    const result = await response.json().catch(function () {
+                        return null;
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(
+                            result && typeof result.message === 'string'
+                                ? result.message
+                                : 'Η αποστολή απέτυχε. Δοκίμασε ξανά.'
+                        );
+                    }
+
+                    emailInput.value = '';
+                    messageInput.value = '';
+                    emailTouched = false;
+                    messageTouched = false;
+                    hasSubmitted = false;
+
+                    statusMessage.hidden = false;
+                    statusMessage.textContent = 'Το μήνυμά σου στάλθηκε.';
+                    statusMessage.className = 'status-message status-success';
+                    postBridgeMessage({
+                        type: 'submitted',
+                        message: 'Το μήνυμά σου στάλθηκε.',
+                    });
+                } catch (error) {
+                    statusMessage.hidden = false;
+                    statusMessage.textContent =
+                        error instanceof Error && error.message
+                            ? error.message
+                            : 'Η αποστολή απέτυχε. Δοκίμασε ξανά.';
+                    statusMessage.className = 'status-message status-error';
+                } finally {
+                    isSubmitting = false;
+                    updateFormState();
+                }
+            }
+
+            emailInput.addEventListener('input', function () {
+                resetStatusMessage();
+                updateFormState();
+            });
+            emailInput.addEventListener('blur', function () {
+                emailTouched = true;
+                updateFormState();
+            });
+            messageInput.addEventListener('input', function () {
+                resetStatusMessage();
+                updateFormState();
+            });
+            messageInput.addEventListener('blur', function () {
+                messageTouched = true;
+                updateFormState();
+            });
+
+            form.addEventListener('submit', handleSubmit);
+            cancelButton.addEventListener('click', closeSupportView);
+            closeButton.addEventListener('click', closeSupportView);
+
+            updateFormState();
+        })();
+    </script>
+</body>
+</html>
