@@ -56,13 +56,13 @@ body[data-embed="1"] {
 .support-shell {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 28px 18px;
+    padding: 32px 18px 28px;
 }
 
 body[data-embed="1"] .support-shell {
-    padding: 18px 14px 28px;
+    padding: 22px 14px 28px;
 }
 
 .support-card {
@@ -74,26 +74,15 @@ body[data-embed="1"] .support-shell {
     box-shadow: 0 16px 24px var(--shadow);
 }
 
-.close-button {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.close-button:hover {
-    background: rgba(127, 127, 127, 0.08);
+.support-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .support-brand {
-    margin: 0 0 10px;
+    margin: 0;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -101,8 +90,44 @@ body[data-embed="1"] .support-shell {
     color: var(--text-muted);
 }
 
+.switcher {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--surface-soft);
+    border-radius: 999px;
+    padding: 3px;
+    border: 1px solid var(--border);
+}
+
+.switcher-button {
+    min-width: 36px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.switcher-button-active {
+    background-color: rgba(55, 183, 195, 0.12);
+}
+
+.switcher-button-text {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.switcher-button-text-active {
+    color: #3b8193;
+}
+
 .support-title {
-    margin: 0;
+    margin: 14px 0 0;
     font-size: 19px;
     line-height: 24px;
     font-weight: 400;
@@ -249,10 +274,14 @@ body[data-mode="dark"] .status-error {
 
 @media (max-width: 640px) {
     .support-shell {
-        padding: 16px;
+        padding: 22px 16px 20px;
     }
 
     .support-card {
         padding: 20px 18px;
+    }
+
+    .support-header-row {
+        align-items: flex-start;
     }
 }

@@ -11,18 +11,32 @@
 <body data-embed="0" data-mode="light" data-support-api-base-url="https://backend-neobill.onrender.com">
     <main class="support-shell">
         <section class="support-card" aria-labelledby="support-title">
-            <button type="button" id="close-button" class="close-button" aria-label="Κλείσιμο">
-                x
-            </button>
-
-            <p class="support-brand">neobill support</p>
+            <div class="support-header-row">
+                <p id="support-brand" class="support-brand">neobill support</p>
+                <div class="switcher" aria-label="Language switcher">
+                    <button
+                        id="lang-el"
+                        class="switcher-button switcher-button-active"
+                        type="button"
+                    >
+                        <span class="switcher-button-text switcher-button-text-active">EL</span>
+                    </button>
+                    <button
+                        id="lang-en"
+                        class="switcher-button"
+                        type="button"
+                    >
+                        <span class="switcher-button-text">EN</span>
+                    </button>
+                </div>
+            </div>
             <h1 id="support-title" class="support-title">Επικοινωνία</h1>
-            <p class="support-subtitle">
+            <p id="support-subtitle" class="support-subtitle">
                 Περίγραψε μας το πρόβλημα σου ή ότι άλλο χρειάζεσαι.
             </p>
 
             <form id="support-form" novalidate>
-                <label class="field-label" for="email">Mail</label>
+                <label id="email-label" class="field-label" for="email">Mail</label>
                 <input
                     id="email"
                     class="text-input"
@@ -34,7 +48,7 @@
                 >
                 <p id="email-error" class="error-text" hidden>Βάλε έγκυρο email.</p>
 
-                <label class="field-label" for="message">Κείμενο</label>
+                <label id="message-label" class="field-label" for="message">Κείμενο</label>
                 <textarea
                     id="message"
                     class="text-input text-area"
@@ -68,33 +82,118 @@
             const MAX_MESSAGE_WORDS = 100;
             const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const searchParams = new URLSearchParams(window.location.search);
+            const COPY = {
+                el: {
+                    pageTitle: 'neobill support',
+                    brand: 'neobill support',
+                    title: 'Επικοινωνία',
+                    subtitle: 'Περίγραψε μας το πρόβλημα σου ή ότι άλλο χρειάζεσαι.',
+                    emailLabel: 'Mail',
+                    emailPlaceholder: 'name@example.com',
+                    emailError: 'Βάλε έγκυρο email.',
+                    messageLabel: 'Κείμενο',
+                    messagePlaceholder: 'Γράψε το αίτημά σου...',
+                    messageError: 'Το μήνυμα πρέπει να έχει από 1 έως 100 λέξεις.',
+                    wordsRemaining: 'Απομένουν {count} λέξεις',
+                    wordsExceeded: 'Υπέρβαση {count} λέξεων',
+                    cancel: 'Ακύρο',
+                    submit: 'Αποστολή',
+                    submitting: 'Αποστολή...',
+                    success: 'Το μήνυμά σου στάλθηκε.',
+                    failure: 'Η αποστολή απέτυχε. Δοκίμασε ξανά.',
+                },
+                en: {
+                    pageTitle: 'neobill support',
+                    brand: 'neobill support',
+                    title: 'Contact',
+                    subtitle: 'Describe your issue or anything else you need.',
+                    emailLabel: 'Email',
+                    emailPlaceholder: 'name@example.com',
+                    emailError: 'Enter a valid email.',
+                    messageLabel: 'Message',
+                    messagePlaceholder: 'Write your request...',
+                    messageError: 'Your message must contain between 1 and 100 words.',
+                    wordsRemaining: '{count} words remaining',
+                    wordsExceeded: '{count} words over limit',
+                    cancel: 'Cancel',
+                    submit: 'Send',
+                    submitting: 'Sending...',
+                    success: 'Your message has been sent.',
+                    failure: 'Sending failed. Please try again.',
+                    destinationUnavailable: 'Support destination is not configured yet.',
+                }
+            };
 
             const mode = searchParams.get('mode') === 'dark' ? 'dark' : 'light';
             const embed = searchParams.get('embed') === '1';
             const source = (searchParams.get('source') || 'landing-support').trim();
+            const langParam = searchParams.get('lang');
             const requestedApiBaseUrl = (searchParams.get('apiBaseUrl') || '').trim();
             const fallbackApiBaseUrl = (document.body.dataset.supportApiBaseUrl || '').trim();
             const apiBaseUrl = (requestedApiBaseUrl || fallbackApiBaseUrl || window.location.origin).replace(/\/+$/, '');
+            const browserLanguage = String(navigator.language || '').toLowerCase();
+            let language = langParam === 'en' || langParam === 'el'
+                ? langParam
+                : (browserLanguage.startsWith('el') ? 'el' : 'en');
 
             document.body.dataset.mode = mode;
             document.body.dataset.embed = embed ? '1' : '0';
 
+            const supportBrand = document.getElementById('support-brand');
+            const supportTitle = document.getElementById('support-title');
+            const supportSubtitle = document.getElementById('support-subtitle');
+            const emailLabel = document.getElementById('email-label');
             const form = document.getElementById('support-form');
             const emailInput = document.getElementById('email');
             const messageInput = document.getElementById('message');
             const emailError = document.getElementById('email-error');
+            const messageLabel = document.getElementById('message-label');
             const messageError = document.getElementById('message-error');
             const remainingWords = document.getElementById('remaining-words');
             const wordCount = document.getElementById('word-count');
             const statusMessage = document.getElementById('status-message');
             const submitButton = document.getElementById('submit-button');
             const cancelButton = document.getElementById('cancel-button');
-            const closeButton = document.getElementById('close-button');
+            const langElButton = document.getElementById('lang-el');
+            const langEnButton = document.getElementById('lang-en');
 
             let emailTouched = false;
             let messageTouched = false;
             let hasSubmitted = false;
             let isSubmitting = false;
+
+            function getCopy() {
+                return COPY[language];
+            }
+
+            function syncLanguageButtons() {
+                [
+                    { button: langElButton, active: language === 'el' },
+                    { button: langEnButton, active: language === 'en' },
+                ].forEach(function (entry) {
+                    entry.button.classList.toggle('switcher-button-active', entry.active);
+                    const textNode = entry.button.querySelector('.switcher-button-text');
+                    if (textNode) {
+                        textNode.classList.toggle('switcher-button-text-active', entry.active);
+                    }
+                });
+            }
+
+            function applyCopy() {
+                const copy = getCopy();
+                document.title = copy.pageTitle;
+                supportBrand.textContent = copy.brand;
+                supportTitle.textContent = copy.title;
+                supportSubtitle.textContent = copy.subtitle;
+                emailLabel.textContent = copy.emailLabel;
+                emailInput.placeholder = copy.emailPlaceholder;
+                emailError.textContent = copy.emailError;
+                messageLabel.textContent = copy.messageLabel;
+                messageInput.placeholder = copy.messagePlaceholder;
+                messageError.textContent = copy.messageError;
+                cancelButton.textContent = copy.cancel;
+                syncLanguageButtons();
+            }
 
             function countWords(value) {
                 const trimmedValue = value.trim();
@@ -143,11 +242,12 @@
             function updateWordCounter() {
                 const totalWords = countWords(messageInput.value);
                 const remaining = MAX_MESSAGE_WORDS - totalWords;
+                const copy = getCopy();
 
                 if (remaining >= 0) {
-                    remainingWords.textContent = 'Απομένουν ' + remaining + ' λέξεις';
+                    remainingWords.textContent = copy.wordsRemaining.replace('{count}', String(remaining));
                 } else {
-                    remainingWords.textContent = 'Υπέρβαση ' + Math.abs(remaining) + ' λέξεων';
+                    remainingWords.textContent = copy.wordsExceeded.replace('{count}', String(Math.abs(remaining)));
                 }
 
                 wordCount.textContent = totalWords + '/' + MAX_MESSAGE_WORDS;
@@ -161,7 +261,22 @@
                 statusMessage.className = 'status-message';
             }
 
+            function getLocalizedServerMessage(rawMessage, statusCode) {
+                const copy = getCopy();
+
+                if (language === 'el') {
+                    return rawMessage || copy.failure;
+                }
+
+                if (statusCode === 503) {
+                    return copy.destinationUnavailable;
+                }
+
+                return copy.failure;
+            }
+
             function updateFormState() {
+                const copy = getCopy();
                 const emailValue = emailInput.value.trim();
                 const messageValue = messageInput.value.trim();
                 const totalWords = countWords(messageValue);
@@ -178,7 +293,7 @@
                 messageError.hidden = !showMessageError;
                 submitButton.disabled = !canSubmit;
                 submitButton.classList.toggle('primary-button-disabled', !canSubmit);
-                submitButton.textContent = isSubmitting ? 'Αποστολή...' : 'Αποστολή';
+                submitButton.textContent = isSubmitting ? copy.submitting : copy.submit;
 
                 updateWordCounter();
 
@@ -222,8 +337,8 @@
                     if (!response.ok) {
                         throw new Error(
                             result && typeof result.message === 'string'
-                                ? result.message
-                                : 'Η αποστολή απέτυχε. Δοκίμασε ξανά.'
+                                ? getLocalizedServerMessage(result.message, response.status)
+                                : getCopy().failure
                         );
                     }
 
@@ -234,18 +349,18 @@
                     hasSubmitted = false;
 
                     statusMessage.hidden = false;
-                    statusMessage.textContent = 'Το μήνυμά σου στάλθηκε.';
+                    statusMessage.textContent = getCopy().success;
                     statusMessage.className = 'status-message status-success';
                     postBridgeMessage({
                         type: 'submitted',
-                        message: 'Το μήνυμά σου στάλθηκε.',
+                        message: getCopy().success,
                     });
                 } catch (error) {
                     statusMessage.hidden = false;
                     statusMessage.textContent =
                         error instanceof Error && error.message
                             ? error.message
-                            : 'Η αποστολή απέτυχε. Δοκίμασε ξανά.';
+                            : getCopy().failure;
                     statusMessage.className = 'status-message status-error';
                 } finally {
                     isSubmitting = false;
@@ -272,8 +387,18 @@
 
             form.addEventListener('submit', handleSubmit);
             cancelButton.addEventListener('click', closeSupportView);
-            closeButton.addEventListener('click', closeSupportView);
+            langElButton.addEventListener('click', function () {
+                language = 'el';
+                applyCopy();
+                updateFormState();
+            });
+            langEnButton.addEventListener('click', function () {
+                language = 'en';
+                applyCopy();
+                updateFormState();
+            });
 
+            applyCopy();
             updateFormState();
         })();
     </script>
