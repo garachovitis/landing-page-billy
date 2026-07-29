@@ -422,6 +422,7 @@
     const featureText = document.getElementById("feature-text");
     const featureButtons = document.querySelectorAll("[data-feature-screen]");
     const mockAppRoot = document.getElementById("mock-app-root");
+    const handsOnSection = document.getElementById("hands-on");
     const langButtons = document.querySelectorAll("[data-lang-switch]");
     const pageDescription = document.getElementById("page-description");
     const translatableNodes = document.querySelectorAll("[data-i18n], [data-i18n-html], [data-i18n-placeholder], [data-i18n-alt], [data-i18n-aria-label]");
@@ -848,6 +849,7 @@
           ${mockAppState.view === "home" ? renderHome() : renderSaved()}
           ${reminderModal}
           ${paymentModal}
+          ${mockAppState.view === "home" && !mockAppState.reminderBillId && !mockAppState.paymentBillId ? '<div class="mock-demo-cursor" aria-hidden="true"></div>' : ""}
         </div>
       `;
     }
@@ -997,6 +999,21 @@
     );
 
     document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+    const handsOnObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === handsOnSection) {
+            handsOnSection.classList.toggle("is-engaged", entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    if (handsOnSection) {
+      handsOnObserver.observe(handsOnSection);
+    }
 
     const heroTilt = document.getElementById("hero-tilt");
     if (heroTilt) {
