@@ -430,6 +430,7 @@
     let currentLanguage = defaultLanguage in translations ? defaultLanguage : "el";
     let activeFlowScreen = "providers";
     let activeFeatureScreen = "monthly";
+    let hasPlayedHandsOnCursor = false;
     const mockAppState = {
       view: "home",
       expandedMonths: {
@@ -1004,7 +1005,18 @@
       (entries) => {
         entries.forEach((entry) => {
           if (entry.target === handsOnSection) {
-            handsOnSection.classList.toggle("is-engaged", entry.isIntersecting);
+            if (entry.isIntersecting && !hasPlayedHandsOnCursor) {
+              handsOnSection.classList.add("is-engaged");
+              hasPlayedHandsOnCursor = true;
+              window.setTimeout(() => {
+                handsOnSection?.classList.remove("is-engaged");
+              }, 4700);
+              return;
+            }
+
+            if (!entry.isIntersecting) {
+              handsOnSection.classList.remove("is-engaged");
+            }
           }
         });
       },
