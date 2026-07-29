@@ -188,7 +188,7 @@ input {
 .hands-on h2,
 .cta h2 {
   margin: 0;
-  font-size: clamp(3.35rem, 7vw, 6.35rem);
+  font-size: clamp(3.15rem, 6.6vw, 5.95rem);
   line-height: 0.9;
   letter-spacing: -0.07em;
   font-weight: 700;
@@ -241,7 +241,7 @@ input {
 
 .hero-visual {
   position: relative;
-  min-height: 680px;
+  min-height: 640px;
   transform-style: preserve-3d;
   transform: perspective(1200px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg));
   transition: transform 0.18s ease;
@@ -272,13 +272,13 @@ input {
 }
 
 .hero-phone-main {
-  width: min(100%, 350px);
+  width: min(100%, 330px);
   top: 5%;
   right: 3%;
 }
 
 .hero-phone-side {
-  width: min(48%, 220px);
+  width: min(44%, 204px);
   left: 0;
   bottom: 4%;
 }
@@ -378,7 +378,7 @@ input {
 }
 
 .device-frame {
-  width: min(100%, 385px);
+  width: min(100%, 370px);
   margin: 0 auto;
   padding: 12px;
   border-radius: 42px;
@@ -387,7 +387,7 @@ input {
 }
 
 .device-frame-large {
-  width: min(100%, 388px);
+  width: min(100%, 374px);
 }
 
 .device-screen {
