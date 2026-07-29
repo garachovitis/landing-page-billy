@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@300;400;500&display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="styles.css">
@@ -26,14 +26,14 @@
     <header class="topbar">
       <a class="brand" href="#hero" aria-label="neobill home">
         <img src="logocol.png" alt="neobill logo">
-        <span>neobill</span>
+        <span class="brand-wordmark">neobill</span>
       </a>
 
       <div class="topbar-actions">
         <nav class="topnav" aria-label="Primary">
-          <a href="#flow" data-i18n="navFlow">flow</a>
-          <a href="#hands-on" data-i18n="navApp">app</a>
-          <a href="#cta" data-i18n="navAccess">access</a>
+          <a href="#flow" data-i18n="navFlow">σύνδεση</a>
+          <a href="#hands-on" data-i18n="navApp">εφαρμογή</a>
+          <a href="#cta" data-i18n="navAccess">πρόσβαση</a>
         </nav>
 
         <div class="language-switch" role="group" aria-label="Language switch">
@@ -48,8 +48,8 @@
         <div class="hero-copy reveal">
           <h1 data-i18n-html="heroTitle">Όλοι οι λογαριασμοί σου<br>σε ένα app.</h1>
           <div class="hero-actions">
-            <a class="button button-primary" href="#hands-on" data-i18n="heroPrimaryCta">δες το app</a>
-            <a class="button button-secondary" href="#cta" data-i18n="heroSecondaryCta">early access</a>
+            <a class="button button-primary" href="#hands-on" data-i18n="heroPrimaryCta">δες την εφαρμογή</a>
+            <a class="button button-secondary" href="#cta" data-i18n="heroSecondaryCta">πρώιμη πρόσβαση</a>
           </div>
         </div>
 
@@ -71,16 +71,15 @@
 
           <article class="flow-step reveal is-active" data-flow-screen="providers">
             <div>
-              <div class="flow-detail-switch" role="tablist" aria-label="Provider method details" data-i18n-aria-label="flowDetailsAria">
-                <button class="flow-detail-chip is-active" type="button" data-flow-screen="providers" data-i18n="flowDetailProviders">πάροχος</button>
-                <button class="flow-detail-chip" type="button" data-flow-screen="login" data-i18n="flowDetailLogin">συνδέσου</button>
-              </div>
               <h3>
                 <button class="flow-step-trigger" type="button" data-flow-screen="providers">
                   <span data-i18n="flowStepCredentialsTitle">μέσω στοιχείων παρόχου</span>
                 </button>
               </h3>
-              <p data-i18n="flowStepCredentialsText">διάλεξε τον πάροχό σου.</p>
+              <div class="flow-inline-actions" role="tablist" aria-label="Provider method details" data-i18n-aria-label="flowDetailsAria">
+                <button class="flow-inline-action is-active" type="button" data-flow-screen="providers" data-i18n="flowStepCredentialsText">διάλεξε πάροχο</button>
+                <button class="flow-inline-action" type="button" data-flow-screen="login" data-i18n="flowDetailLogin">συνδέσου</button>
+              </div>
             </div>
           </article>
 
@@ -88,10 +87,10 @@
             <div>
               <h3>
                 <button class="flow-step-trigger" type="button" data-flow-screen="mail">
-                  <span data-i18n="flowStepMailTitle">forwarding email</span>
+                  <span data-i18n="flowStepMailTitle">προώθηση email</span>
                 </button>
               </h3>
-              <p data-i18n="flowStepMailText">προώθησε μας τον λογαριασμό που έλαβες στο mail σου από τον πάροχο.</p>
+              <p data-i18n="flowStepMailText">προώθησέ μας τον λογαριασμό που έλαβες στο email σου από τον πάροχο.</p>
             </div>
           </article>
         </div>
@@ -129,7 +128,7 @@
           <div class="preview-controls" role="tablist" aria-label="Feature screens" data-i18n-aria-label="featuresAria">
             <button class="preview-chip is-active" type="button" data-feature-screen="monthly" data-i18n="featureChipMonthly">ανά μήνα</button>
             <button class="preview-chip" type="button" data-feature-screen="payment" data-i18n="featureChipPayment">πληρωμή</button>
-            <button class="preview-chip" type="button" data-feature-screen="calendar" data-i18n="featureChipCalendar">calendar</button>
+            <button class="preview-chip" type="button" data-feature-screen="calendar" data-i18n="featureChipCalendar">ημερολόγιο</button>
             <button class="preview-chip" type="button" data-feature-screen="history" data-i18n="featureChipHistory">ιστορικό</button>
           </div>
           <div class="hands-on-note">
@@ -141,7 +140,7 @@
 
       <section id="hands-on" class="hands-on reveal">
         <div class="hands-on-copy">
-          <h2 data-i18n="previewHeading">δοκίμασε το app.</h2>
+          <h2 data-i18n="previewHeading">δοκίμασε την εφαρμογή.</h2>
         </div>
 
         <div class="hands-on-visual hands-on-visual-full">
@@ -156,7 +155,7 @@
       <section id="cta" class="cta reveal">
         <div class="cta-card">
           <h2 data-i18n="ctaHeading">μπες πρώτος.</h2>
-          <p class="cta-text" data-i18n="ctaText">Το app είναι σε επίπεδο δοκιμών. Άφησε το email σου για να γίνεις από τους πρώτους testers.</p>
+          <p class="cta-text" data-i18n="ctaText">Η εφαρμογή είναι σε δοκιμαστική φάση. Άφησε το email σου για να είσαι από τους πρώτους που θα αποκτήσουν πρόσβαση.</p>
 
           <form
             id="notify-form"
@@ -164,16 +163,19 @@
             action="https://docs.google.com/forms/d/e/1FAIpQLSdaiULTDLo7OEo_p2IZLjdABnU_9qekUGy5cjxgSEbu1U2I0w/formResponse"
             method="POST"
             target="_blank"
+            novalidate
           >
             <input
-              type="email"
+              type="text"
+              inputmode="email"
+              autocomplete="email"
               name="entry.1234567890"
               id="email-input"
               placeholder="email"
               data-i18n-placeholder="emailPlaceholder"
               required
             >
-            <button class="button button-primary" type="submit" data-i18n="ctaButton">notify me</button>
+            <button class="button button-primary" type="submit" data-i18n="ctaButton">ειδοποίησέ με</button>
           </form>
 
           <div class="cta-links">
@@ -183,7 +185,7 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeACkN0JMl7ruy-VreLe6bDkqX2AECYKw62ziymLm218_q-wA/viewform?usp=header" target="_blank" rel="noopener noreferrer" data-i18n="ctaWhiteLabel">
               white-label
             </a>
-            <a href="/support/" data-i18n="ctaSupport">support</a>
+            <a href="/support/" data-i18n="ctaSupport">υποστήριξη</a>
           </div>
         </div>
       </section>
@@ -198,29 +200,29 @@
     const translations = {
       el: {
         pageDescription: "neobill. λογαριασμοί, reminders, πληρωμές. χωρίς θόρυβο.",
-        navFlow: "flow",
-        navApp: "app",
-        navAccess: "access",
+        navFlow: "σύνδεση",
+        navApp: "εφαρμογή",
+        navAccess: "πρόσβαση",
         heroTitle: "Όλοι οι λογαριασμοί σου<br>σε ένα app.",
-        heroPrimaryCta: "δες το app",
-        heroSecondaryCta: "early access",
+        heroPrimaryCta: "δες την εφαρμογή",
+        heroSecondaryCta: "πρώιμη πρόσβαση",
         heroMainAlt: "Αρχική οθόνη neobill",
         heroSideAlt: "Κατηγορίες neobill",
         flowHeading: "πώς συνδέομαι",
         flowStepCredentialsTitle: "μέσω στοιχείων παρόχου",
-        flowStepCredentialsText: "διάλεξε τον πάροχό σου.",
+        flowStepCredentialsText: "διάλεξε πάροχο",
         flowDetailsAria: "Λεπτομέρειες σύνδεσης παρόχου",
         flowDetailProviders: "πάροχος",
         flowDetailLogin: "συνδέσου",
-        flowStepMailTitle: "forwarding email",
-        flowStepMailText: "προώθησε μας τον λογαριασμό που έλαβες στο mail σου από τον πάροχο.",
+        flowStepMailTitle: "προώθηση email",
+        flowStepMailText: "προώθησέ μας τον λογαριασμό που έλαβες στο email σου από τον πάροχο.",
         featuresHeading: "Βασικές λειτουργίες",
-        featuresAria: "Βασικές λειτουργίες app",
+        featuresAria: "Βασικές λειτουργίες εφαρμογής",
         featureChipMonthly: "ανά μήνα",
         featureChipPayment: "πληρωμή",
-        featureChipCalendar: "calendar",
+        featureChipCalendar: "ημερολόγιο",
         featureChipHistory: "ιστορικό",
-        previewHeading: "δοκίμασε το app.",
+        previewHeading: "δοκίμασε την εφαρμογή.",
         appTitleHome: "Αρχική",
         appTitleSaved: "Αποθηκευμένα",
         appFolderAria: "Άνοιγμα αποθηκευμένων",
@@ -243,16 +245,16 @@
         appPaymentCancel: "Άκυρο",
         appSavedInfo: "Ιστορικό όλων των πληρωμών σου.",
         ctaHeading: "μπες πρώτος.",
-        ctaText: "Το app είναι σε επίπεδο δοκιμών. Άφησε το email σου για να γίνεις από τους πρώτους testers.",
+        ctaText: "Η εφαρμογή είναι σε δοκιμαστική φάση. Άφησε το email σου για να είσαι από τους πρώτους που θα αποκτήσουν πρόσβαση.",
         emailPlaceholder: "email",
-        ctaButton: "notify me",
+        ctaButton: "ειδοποίησέ με",
         ctaSuccess: "στάλθηκε.",
         ctaWhiteLabel: "white-label",
-        ctaSupport: "support"
+        ctaSupport: "υποστήριξη"
       },
       en: {
         pageDescription: "neobill. bills, reminders, payments. no noise.",
-        navFlow: "flow",
+        navFlow: "how it works",
         navApp: "app",
         navAccess: "access",
         heroTitle: "All your bills<br>in one app.",
@@ -262,7 +264,7 @@
         heroSideAlt: "neobill categories",
         flowHeading: "how to connect",
         flowStepCredentialsTitle: "with provider credentials",
-        flowStepCredentialsText: "pick your provider.",
+        flowStepCredentialsText: "choose provider",
         flowDetailsAria: "Provider sign-in details",
         flowDetailProviders: "provider",
         flowDetailLogin: "sign in",
@@ -297,7 +299,7 @@
         appPaymentCancel: "Cancel",
         appSavedInfo: "Full history of your payments.",
         ctaHeading: "get in early.",
-        ctaText: "The app is in testing. Leave your email to become one of the first testers.",
+        ctaText: "The app is currently in testing. Leave your email to get access among the first users.",
         emailPlaceholder: "email",
         ctaButton: "notify me",
         ctaSuccess: "sent.",
@@ -419,7 +421,7 @@
     const flowImage = document.getElementById("flow-image");
     const flowSteps = document.querySelectorAll(".flow-step");
     const flowStepTriggers = document.querySelectorAll(".flow-step-trigger");
-    const flowDetailChips = document.querySelectorAll(".flow-detail-chip");
+    const flowInlineActions = document.querySelectorAll(".flow-inline-action");
     const featureImage = document.getElementById("feature-image");
     const featureTitle = document.getElementById("feature-title");
     const featureText = document.getElementById("feature-text");
@@ -609,8 +611,8 @@
           item.dataset.flowScreen === "mail" ? key === "mail" : key !== "mail",
         );
       });
-      flowDetailChips.forEach((chip) => {
-        chip.classList.toggle("is-active", chip.dataset.flowScreen === key);
+      flowInlineActions.forEach((action) => {
+        action.classList.toggle("is-active", action.dataset.flowScreen === key);
       });
 
       swapImage(flowImage, screen.image, screen.alt);
@@ -900,8 +902,8 @@
       button.addEventListener("click", () => activateFlow(button.dataset.flowScreen));
     });
 
-    flowDetailChips.forEach((chip) => {
-      chip.addEventListener("click", () => activateFlow(chip.dataset.flowScreen));
+    flowInlineActions.forEach((action) => {
+      action.addEventListener("click", () => activateFlow(action.dataset.flowScreen));
     });
 
     featureButtons.forEach((button) => {
