@@ -1,362 +1,1043 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neobill</title>
-    <link rel="icon" href="logocol.png" type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-
-      
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>neobill</title>
+  <meta
+    id="page-description"
+    name="description"
+    content="neobill. λογαριασμοί, reminders, πληρωμές. χωρίς θόρυβο."
+  >
+  <link rel="icon" href="logocol.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <section class="hero">
-        <img src="neobill.png" alt="Neobill Logo" width="180">
-        <h2>All your bills linked together</h2>
-        <p class="lead">Manage, Pay, and Schedule Bills Easily</p>
-        <button class="btn btn-primary">Get Started</button>
-    </section>
+  <div class="page-shell">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
 
-    <section class="section text-center">
-        <h3 class="ui-overlay-title-2">All Your Bills in One App</h3>
-        <img src="allinone.gif" alt="App Interface" class="allinone-img">
-        <a href="#user-experience" id="scroll-down"></a>
-    </section>
-    
-    <section id="user-experience" class="section bg-white py-5">
-        <div class="centered-section">
-          <div class="with-neob-container">
-            <div class="with-neob-overlay">
-              <h3 class="overlay-title">With neobill</h3>
-              <p class="overlay-text">You can connect all your bills in a single application<br> and pay in just 3 steps.</p>
-            </div>
-          </div>
+    <header class="topbar">
+      <a class="brand" href="#hero" aria-label="neobill home">
+        <img src="logocol.png" alt="neobill logo">
+        <span class="brand-wordmark">neobill</span>
+      </a>
 
-          <div class="ui">
-            <div class="ui-overlay-container">
-              <h3 class="ui-overlay-title">What you have to do?</h3>
-              <img src="ui_pro.png" alt="App Interface" class="img-fluid w-100" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-    </section>
-    
-    
-    <section class="section text-center pt-3" style="margin-bottom: -40px;">
-      <div class="container">
-        <h1 class="section-title">What else?</h1>
-      </div>
-    </section>
-    <section id="neobill-showcase" class="position-relative text-white">
-        <div id="neobillCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="5000">
-        <div class="carousel-inner h-100">
+      <div class="topbar-actions">
+        <nav class="topnav" aria-label="Primary">
+          <a href="#flow" data-i18n="navFlow">σύνδεση</a>
+          <a href="#hands-on" data-i18n="navApp">εφαρμογή</a>
+          <a href="#cta" data-i18n="navAccess">πρόσβαση</a>
+        </nav>
 
-          <div class="carousel-item active h-100 position-relative">
-            <div class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
-              <video class="w-100 h-100 object-fit-cover" autoplay loop muted playsinline preload="auto" data-carousel-video>
-                <source src="overdue.mp4" type="video/mp4">
-                <img src="overdue.gif" alt="Track animation">
-              </video>
-            </div>
-            <div class="container h-100 d-flex flex-column justify-content-center position-relative z-1">
-              <div class="row align-items-center justify-content-center w-100">
-                <div class="col-md-6 text-end">
-                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-4.5rem);">
-                    <span style="display: inline-block;">Live Track Your Bills</span><br>
-                  </h2>
-                </div>
-                <div class="col-md-6 text-center">
-                  <img src="track.png" class="img-fluid" alt="Track Image" style="max-height: 400px;" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item h-100 position-relative">
-            <div class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
-              <video class="w-100 h-100 object-fit-cover" autoplay loop muted playsinline preload="auto" data-carousel-video>
-                <source src="save.mp4" type="video/mp4">
-                <img src="save.gif" alt="Save animation">
-              </video>
-            </div>
-            <div class="container h-100 d-flex flex-column justify-content-center position-relative z-1">
-              <div class="row align-items-center justify-content-center w-100">
-                <div class="col-md-6 text-center">
-                  <img src="saveimg.png" class="img-fluid" alt="Save Image" style="max-height: 400px;" loading="lazy" decoding="async">
-                </div>
-                <div class="col-md-6 text-end">
-                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-7rem);">
-                    <span style="display: inline-block;">Save Paid</span><br>
-                    <span style="display: inline-block; transform: translateX(-11.5rem);">Bills</span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item h-100 position-relative">
-            <div class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
-              <video class="w-100 h-100 object-fit-cover" autoplay loop muted playsinline preload="auto" data-carousel-video>
-                <source src="categ.mp4" type="video/mp4">
-                <img src="categ.gif" alt="Categorize animation">
-              </video>
-            </div>
-
-            <div class="container h-100 d-flex flex-column justify-content-center position-relative z-1">
-              <div class="row align-items-center justify-content-center w-100">
-                <div class="col-md-6 text-end">
-                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-1.5rem);">
-                    <span style="display: inline-block;">Categorize</span>
-                  </h2>
-                </div>
-                <div class="col-md-6 text-center">
-                  <img src="categ.png" class="img-fluid" alt="Categorize Image" style="max-height: 400px;" loading="lazy" decoding="async">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item h-100 position-relative">
-            <div class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
-              <video class="w-100 h-100 object-fit-cover" autoplay loop muted playsinline preload="auto" data-carousel-video>
-                <source src="notify.mp4" type="video/mp4">
-                <img src="notify.gif" alt="Notifications animation">
-              </video>
-            </div>
-            <div class="container h-100 d-flex flex-column justify-content-center position-relative z-1">
-              <div class="row align-items-center justify-content-center w-100">
-                <div class="col-md-6 text-center">
-                  <img src="notify.png" class="img-fluid" alt="Save Image" style="max-height: 400px;" loading="lazy" decoding="async">
-                </div>
-                <div class="col-md-6 text-end">
-                  <h2 class="fw-bold lh-1" style="font-size: 4.5rem; z-index: 2; transform: translateX(-7rem);">
-                    <span style="display: inline-block;">Get Notified</span><br>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#neobillCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#neobillCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-
-        <div class="custom-carousel-buttons " style="flex-wrap: nowrap; justify-content: center;">
-          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="0">
-            <span class="label">Track</span>
-            <div class="progress-bar"></div>
-          </button>
-          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="1">
-            <span class="label">Save</span>
-            <div class="progress-bar"></div>
-          </button>
-          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="2">
-            <span class="label">Categorize</span>
-            <div class="progress-bar"></div>
-          </button>
-          <button class="progress-btn" data-bs-target="#neobillCarousel" data-bs-slide-to="3">
-            <span class="label">Get notified</span>
-            <div class="progress-bar"></div>
-          </button>
+        <div class="language-switch" role="group" aria-label="Language switch">
+          <button class="language-chip is-active" type="button" data-lang-switch="el">EL</button>
+          <button class="language-chip" type="button" data-lang-switch="en">EN</button>
         </div>
       </div>
-    </section>
+    </header>
 
-    <section id="partner-program" class="section partner-section">
-        <div class="container">
-            <div class="partner-card">
-                <div class="partner-copy">
-                    <span class="partner-pill">For Enterprises</span>
-                    <h2 class="partner-title">Bring neobill to your ecosystem</h2>
-                    <p class="partner-text">
-                        Offer a tailor-made bill management experience inside your own app.
-                    </p>
-                    <p class="partner-audience inline">
-                        <span class="audience-title">Licensed PSD2 Institutions</span>
-                        <span class="audience-separator">•</span>
-                        <span class="audience-title">Utility Providers</span>
-                    </p>
-                </div>
-                <div class="partner-form">
-                    <p class="partner-highlight">
-                        Skip the back-and-forth emails and tell us exactly what you need through our dedicated partner form.
-                    </p>
-                    <a class="btn btn-primary partner-submit" href="https://docs.google.com/forms/d/e/1FAIpQLSeACkN0JMl7ruy-VreLe6bDkqX2AECYKw62ziymLm218_q-wA/viewform?usp=header" target="_blank" rel="noopener noreferrer">
-                        Request a white-label demo
-                    </a>
-                    <p class="partner-footnote">The Google Form opens in a new tab so you can complete it securely.</p>
-                </div>
-            </div>
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-copy reveal">
+          <h1 data-i18n-html="heroTitle">Όλοι οι λογαριασμοί σου<br>σε ένα app.</h1>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#hands-on" data-i18n="heroPrimaryCta">δες την εφαρμογή</a>
+            <a class="button button-secondary" href="#cta" data-i18n="heroSecondaryCta">πρώιμη πρόσβαση</a>
+          </div>
         </div>
-    </section>
 
-    <section class="section newsletter-section">
-        <div class="container">
-            <div class="newsletter-card text-center">
-                <h2 class="section-title text-white mb-3">Stay Updated!</h2>
-                <p class="section-subtitle text-white-50 mb-1">Be the first to know when <strong>neobill</strong> launches.</p>
-                <p class="section-subtitle text-white-50">Google Forms</p>
-                <form id="notify-form" class="newsletter-form d-flex flex-column flex-md-row align-items-center justify-content-center"
-                    action="https://docs.google.com/forms/d/e/1FAIpQLSdaiULTDLo7OEo_p2IZLjdABnU_9qekUGy5cjxgSEbu1U2I0w/formResponse"
-                    method="POST" target="_blank">
-                    <input type="email" name="entry.1234567890" id="email-input" class="form-control newsletter-input me-md-2 mb-2 mb-md-0" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-light newsletter-submit">Notify Me</button>
-                </form>
-                <p id="success-message" class="newsletter-success text-white-50" style="display: none;">Thank you! You'll be notified when we launch.</p>
-            </div>
+        <div class="hero-visual reveal" id="hero-tilt">
+          <div class="hero-stage"></div>
+          <figure class="hero-phone hero-phone-main">
+            <img src="assets/screenshots/home-dashboard.png" alt="Αρχική οθόνη neobill" data-i18n-alt="heroMainAlt">
+          </figure>
+          <figure class="hero-phone hero-phone-side">
+            <img src="assets/screenshots/categories.png" alt="Κατηγορίες neobill" data-i18n-alt="heroSideAlt">
+          </figure>
+          <div class="quiet-chip quiet-chip-top">201.84€</div>
         </div>
-    </section>
-    
-    
-    <footer class="text-center py-4 bg-dark text-light">
-        <p>© 2025 <strong>neobill</strong>. All Rights Reserved.</p>
-        <p class="mb-0">
-            <a href="/support/" class="text-light text-decoration-none">Support</a>
-        </p>
+      </section>
+
+      <section id="flow" class="flow">
+        <div class="flow-copy">
+          <h2 class="reveal" data-i18n-html="flowHeading">πώς συνδέομαι</h2>
+
+          <article class="flow-step reveal is-active" data-flow-screen="providers">
+            <div>
+              <h3>
+                <button class="flow-step-trigger" type="button" data-flow-screen="providers">
+                  <span data-i18n="flowStepCredentialsTitle">μέσω στοιχείων παρόχου</span>
+                </button>
+              </h3>
+              <div class="flow-inline-actions" role="tablist" aria-label="Provider method details" data-i18n-aria-label="flowDetailsAria">
+                <button class="flow-inline-action is-active" type="button" data-flow-screen="providers" data-i18n="flowStepCredentialsText">διάλεξε πάροχο</button>
+                <button class="flow-inline-action" type="button" data-flow-screen="login" data-i18n="flowDetailLogin">συνδέσου</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-step reveal" data-flow-screen="mail">
+            <div>
+              <h3>
+                <button class="flow-step-trigger" type="button" data-flow-screen="mail">
+                  <span data-i18n="flowStepMailTitle">προώθηση email</span>
+                </button>
+              </h3>
+              <p data-i18n="flowStepMailText">προώθησέ μας τον λογαριασμό που έλαβες στο email σου από τον πάροχο.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="flow-visual">
+          <div class="sticky-phone">
+            <div class="device-frame">
+              <div class="device-screen">
+                <img
+                  id="flow-image"
+                  src="assets/screenshots/provider-list.png"
+                  alt="Λίστα παρόχων neobill"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features reveal">
+        <div class="features-visual">
+          <div class="device-frame device-frame-large">
+            <div class="device-screen">
+              <img
+                id="feature-image"
+                src="assets/screenshots/home-dashboard.png"
+                alt="Λειτουργίες neobill"
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="features-copy">
+          <h2 data-i18n="featuresHeading">Βασικές λειτουργίες</h2>
+          <div class="preview-controls" role="tablist" aria-label="Feature screens" data-i18n-aria-label="featuresAria">
+            <button class="preview-chip is-active" type="button" data-feature-screen="monthly" data-i18n="featureChipMonthly">ανά μήνα</button>
+            <button class="preview-chip" type="button" data-feature-screen="payment" data-i18n="featureChipPayment">πληρωμή</button>
+            <button class="preview-chip" type="button" data-feature-screen="calendar" data-i18n="featureChipCalendar">ημερολόγιο</button>
+            <button class="preview-chip" type="button" data-feature-screen="history" data-i18n="featureChipHistory">ιστορικό</button>
+          </div>
+          <div class="hands-on-note">
+            <strong id="feature-title">ανά μήνα</strong>
+            <p id="feature-text">όλοι οι λογαριασμοί σου συγκεντρωμένοι ανά μήνα.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="hands-on" class="hands-on reveal">
+        <div class="hands-on-copy">
+          <h2 data-i18n="previewHeading">δοκίμασε την εφαρμογή.</h2>
+        </div>
+
+        <div class="hands-on-visual hands-on-visual-full">
+          <div class="device-frame device-frame-large device-frame-mock">
+            <div class="device-screen mock-app-screen">
+              <div id="mock-app-root" class="mock-app-root"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="cta reveal">
+        <div class="cta-card">
+          <h2 data-i18n="ctaHeading">μπες πρώτος.</h2>
+          <p class="cta-text" data-i18n="ctaText">Η εφαρμογή είναι σε δοκιμαστική φάση. Άφησε το email σου για να είσαι από τους πρώτους που θα αποκτήσουν πρόσβαση.</p>
+
+          <form
+            id="notify-form"
+            class="notify-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSdaiULTDLo7OEo_p2IZLjdABnU_9qekUGy5cjxgSEbu1U2I0w/formResponse"
+            method="POST"
+            target="_blank"
+            novalidate
+          >
+            <input
+              type="text"
+              inputmode="email"
+              autocomplete="email"
+              name="entry.1234567890"
+              id="email-input"
+              placeholder="email"
+              data-i18n-placeholder="emailPlaceholder"
+              required
+            >
+            <button class="button button-primary" type="submit" data-i18n="ctaButton">ειδοποίησέ με</button>
+          </form>
+
+          <div class="cta-links">
+            <p id="success-message" class="success-message" hidden data-i18n="ctaSuccess">
+              στάλθηκε.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeACkN0JMl7ruy-VreLe6bDkqX2AECYKw62ziymLm218_q-wA/viewform?usp=header" target="_blank" rel="noopener noreferrer" data-i18n="ctaWhiteLabel">
+              white-label
+            </a>
+            <a href="/support/" data-i18n="ctaSupport">υποστήριξη</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="current-year"></span> neobill</p>
     </footer>
+  </div>
 
-    <script>
-        $(document).ready(function(){
-            $(".btn-primary").click(function(){
-                $('html, body').animate({
-                    scrollTop: $(".section").first().offset().top
-                }, 800);
-            });
-        });
-    </script>
-    
-    <script>
-        $(document).ready(function(){
-            $("#scroll-down").click(function(e){
-                e.preventDefault();
-                $('html, body').animate({
-                    scrollTop: $("#user-experience").offset().top
-                }, 700); // 800ms for smooth effect
-            });
-        });
-    </script>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const elements = document.querySelectorAll('.animated, .slide-in');
-    
-            function handleScroll() {
-                elements.forEach(element => {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top < window.innerHeight * 0.85) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-    
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); 
-        });
-    </script>
+  <script>
+    const translations = {
+      el: {
+        pageDescription: "neobill. λογαριασμοί, reminders, πληρωμές. χωρίς θόρυβο.",
+        navFlow: "σύνδεση",
+        navApp: "εφαρμογή",
+        navAccess: "πρόσβαση",
+        heroTitle: "Όλοι οι λογαριασμοί σου<br>σε ένα app.",
+        heroPrimaryCta: "δες την εφαρμογή",
+        heroSecondaryCta: "πρώιμη πρόσβαση",
+        heroMainAlt: "Αρχική οθόνη neobill",
+        heroSideAlt: "Κατηγορίες neobill",
+        flowHeading: "πώς συνδέομαι",
+        flowStepCredentialsTitle: "μέσω στοιχείων παρόχου",
+        flowStepCredentialsText: "διάλεξε πάροχο",
+        flowDetailsAria: "Λεπτομέρειες σύνδεσης παρόχου",
+        flowDetailProviders: "πάροχος",
+        flowDetailLogin: "συνδέσου",
+        flowStepMailTitle: "προώθηση email",
+        flowStepMailText: "προώθησέ μας τον λογαριασμό που έλαβες στο email σου από τον πάροχο.",
+        featuresHeading: "Βασικές λειτουργίες",
+        featuresAria: "Βασικές λειτουργίες εφαρμογής",
+        featureChipMonthly: "ανά μήνα",
+        featureChipPayment: "πληρωμή",
+        featureChipCalendar: "ημερολόγιο",
+        featureChipHistory: "ιστορικό",
+        previewHeading: "δοκίμασε την εφαρμογή.",
+        appTitleHome: "Αρχική",
+        appTitleSaved: "Αποθηκευμένα",
+        appFolderAria: "Άνοιγμα αποθηκευμένων",
+        appBackAria: "Επιστροφή στην αρχική",
+        appMonthlyExpenses: "Μηνιαία έξοδα",
+        appUpdated: "Ενημερώθηκε",
+        appDue: "Λήξη",
+        appReminder: "Υπενθύμιση",
+        appPayment: "Πληρωμή",
+        appPaid: "Εξοφλήθηκε",
+        appReminderTitle: "Υπενθύμιση Πληρωμής",
+        appReminderText: "Θέλεις να προσθέσεις υπενθύμιση στο ημερολόγιό σου;",
+        appReminderHint: "Θα ανοίξει έτοιμο event για επιβεβαίωση.",
+        appReminderConfirm: "Προσθήκη",
+        appReminderCancel: "Άκυρο",
+        appPaymentTitle: "Κωδικός Πληρωμής",
+        appPaymentCopy: "Αντιγραφή RF",
+        appPaymentCopied: "Αντιγράφηκε!",
+        appPaymentConfirm: "Έχει εξοφληθεί",
+        appPaymentCancel: "Άκυρο",
+        appSavedInfo: "Ιστορικό όλων των πληρωμών σου.",
+        ctaHeading: "μπες πρώτος.",
+        ctaText: "Η εφαρμογή είναι σε δοκιμαστική φάση. Άφησε το email σου για να είσαι από τους πρώτους που θα αποκτήσουν πρόσβαση.",
+        emailPlaceholder: "email",
+        ctaButton: "ειδοποίησέ με",
+        ctaSuccess: "στάλθηκε.",
+        ctaWhiteLabel: "white-label",
+        ctaSupport: "υποστήριξη"
+      },
+      en: {
+        pageDescription: "neobill. bills, reminders, payments. no noise.",
+        navFlow: "how it works",
+        navApp: "app",
+        navAccess: "access",
+        heroTitle: "All your bills<br>in one app.",
+        heroPrimaryCta: "see the app",
+        heroSecondaryCta: "early access",
+        heroMainAlt: "neobill home screen",
+        heroSideAlt: "neobill categories",
+        flowHeading: "how to connect",
+        flowStepCredentialsTitle: "with provider credentials",
+        flowStepCredentialsText: "choose provider",
+        flowDetailsAria: "Provider sign-in details",
+        flowDetailProviders: "provider",
+        flowDetailLogin: "sign in",
+        flowStepMailTitle: "forwarding email",
+        flowStepMailText: "forward the bill you received in your email from the provider.",
+        featuresHeading: "Core features",
+        featuresAria: "Core app features",
+        featureChipMonthly: "monthly",
+        featureChipPayment: "payment",
+        featureChipCalendar: "calendar",
+        featureChipHistory: "history",
+        previewHeading: "try the app.",
+        appTitleHome: "Home",
+        appTitleSaved: "Saved",
+        appFolderAria: "Open saved bills",
+        appBackAria: "Back to home",
+        appMonthlyExpenses: "Monthly expenses",
+        appUpdated: "Updated",
+        appDue: "Due",
+        appReminder: "Reminder",
+        appPayment: "Pay",
+        appPaid: "Paid",
+        appReminderTitle: "Payment Reminder",
+        appReminderText: "Do you want to add a reminder to your calendar?",
+        appReminderHint: "A ready event will open for confirmation.",
+        appReminderConfirm: "Add",
+        appReminderCancel: "Cancel",
+        appPaymentTitle: "Payment Code",
+        appPaymentCopy: "Copy RF",
+        appPaymentCopied: "Copied!",
+        appPaymentConfirm: "Mark paid",
+        appPaymentCancel: "Cancel",
+        appSavedInfo: "Full history of your payments.",
+        ctaHeading: "get in early.",
+        ctaText: "The app is currently in testing. Leave your email to get access among the first users.",
+        emailPlaceholder: "email",
+        ctaButton: "notify me",
+        ctaSuccess: "sent.",
+        ctaWhiteLabel: "white-label",
+        ctaSupport: "support"
+      }
+    };
 
-    <script>
-        document.getElementById("notify-form").addEventListener("submit", function(event) {
-            document.getElementById("success-message").style.display = "block";
-            document.getElementById("email-input").value = ""; 
-        });
-    </script>
-    
-    <script>
-        const carousel = document.querySelector('#neobillCarousel');
-        const indicators = carousel ? document.querySelectorAll('.progress-btn') : [];
-        const carouselVideos = carousel ? carousel.querySelectorAll('video[data-carousel-video]') : [];
-        let interval;
-
-        if (carousel) {
-            function activateIndicator(index) {
-                indicators.forEach(btn => {
-                    const bar = btn.querySelector('.progress-bar');
-                    btn.classList.remove('active');
-                    bar.style.transition = 'none';
-                    bar.style.width = '0%';
-                });
-
-                const currentBtn = indicators[index];
-                if (!currentBtn) {
-                    return;
-                }
-                const currentBar = currentBtn.querySelector('.progress-bar');
-                currentBtn.classList.add('active');
-
-                // Trigger reflow to ensure transition occurs
-                void currentBar.offsetWidth;
-
-                currentBar.style.transition = 'width 5s linear';
-                currentBar.style.width = '100%';
-            }
-
-            function playActiveVideo() {
-                const slides = [...carousel.querySelectorAll('.carousel-item')];
-                slides.forEach((slide, idx) => {
-                    const video = slide.querySelector('video[data-carousel-video]');
-                    if (!video) {
-                        return;
-                    }
-                    if (slide.classList.contains('active')) {
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(() => {
-                                /* autoplay might be blocked; keep muted to allow resume on interaction */
-                            });
-                        }
-                    } else {
-                        video.pause();
-                        video.currentTime = 0;
-                    }
-                });
-            }
-
-            function initCarouselProgress() {
-                const slides = carousel.querySelectorAll('.carousel-item');
-                let activeIndex = [...slides].findIndex(item => item.classList.contains('active'));
-                if (activeIndex < 0) {
-                    activeIndex = 0;
-                    slides[0]?.classList.add('active');
-                }
-                activateIndicator(activeIndex);
-                playActiveVideo();
-
-                clearInterval(interval);
-                interval = setInterval(() => {
-                    carousel.querySelector('.carousel-control-next').click();
-                }, 5000);
-            }
-
-            document.querySelectorAll('[data-bs-slide-to]').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    setTimeout(() => {
-                        initCarouselProgress();
-                    }, 100);
-                });
-            });
-
-            document.addEventListener('DOMContentLoaded', () => {
-                carouselVideos.forEach(video => {
-                    video.setAttribute('preload', 'auto');
-                });
-                initCarouselProgress();
-            });
-
-            carousel.addEventListener('slid.bs.carousel', () => {
-                const newIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
-                activateIndicator(newIndex);
-                playActiveVideo();
-            });
+    const flowScreens = {
+      el: {
+        method: {
+          image: "assets/screenshots/onboarding-method.png",
+          title: "διάλεξε τρόπο",
+          text: "credentials ή mail.",
+          alt: "Onboarding flow neobill"
+        },
+        providers: {
+          image: "assets/screenshots/provider-list.png",
+          title: "πάροχος",
+          text: "διάλεξε τον πάροχό σου.",
+          alt: "Λίστα παρόχων neobill"
+        },
+        login: {
+          image: "assets/screenshots/provider-login.png",
+          title: "συνδέσου",
+          text: "βάλε τα στοιχεία του παρόχου σου για να συνδεθείς.",
+          alt: "Σύνδεση παρόχου neobill"
+        },
+        mail: {
+          image: "assets/screenshots/forwarding-email.png",
+          title: "forwarding email",
+          text: "προώθησε μας τον λογαριασμό που έλαβες στο mail σου από τον πάροχο.",
+          alt: "Forwarding email neobill"
         }
-    </script>
+      },
+      en: {
+        method: {
+          image: "assets/screenshots/onboarding-method.png",
+          title: "pick a method",
+          text: "credentials or mail.",
+          alt: "neobill onboarding flow"
+        },
+        providers: {
+          image: "assets/screenshots/provider-list.png",
+          title: "provider",
+          text: "pick your provider.",
+          alt: "neobill provider list"
+        },
+        login: {
+          image: "assets/screenshots/provider-login.png",
+          title: "sign in",
+          text: "enter your provider credentials to connect.",
+          alt: "neobill provider sign in"
+        },
+        mail: {
+          image: "assets/screenshots/forwarding-email.png",
+          title: "forwarding",
+          text: "forward the bill you received in your email from the provider.",
+          alt: "neobill forwarding email"
+        }
+      }
+    };
+
+    const featureScreens = {
+      el: {
+        monthly: {
+          image: "assets/screenshots/home-dashboard.png",
+          title: "ανά μήνα",
+          text: "όλοι οι λογαριασμοί σου συγκεντρωμένοι ανά μήνα.",
+          alt: "Λειτουργίες neobill"
+        },
+        payment: {
+          image: "assets/screenshots/rf-code.png",
+          title: "πληρωμή",
+          text: "πληρώνεις όποτε θες.",
+          alt: "Πληρωμή neobill"
+        },
+        calendar: {
+          image: "assets/screenshots/reminder-modal.png",
+          title: "calendar",
+          text: "προσθέτεις υπενθύμιση με ένα μόνο κουμπί στο calendar.",
+          alt: "Υπενθύμιση calendar neobill"
+        },
+        history: {
+          image: "assets/screenshots/history.png",
+          title: "ιστορικό",
+          text: "κρατάς ιστορικό όλων των πληρωμών σου.",
+          alt: "Ιστορικό πληρωμών neobill"
+        }
+      },
+      en: {
+        monthly: {
+          image: "assets/screenshots/home-dashboard.png",
+          title: "monthly",
+          text: "all your bills grouped by month.",
+          alt: "neobill features"
+        },
+        payment: {
+          image: "assets/screenshots/rf-code.png",
+          title: "payment",
+          text: "pay whenever you want.",
+          alt: "neobill payment"
+        },
+        calendar: {
+          image: "assets/screenshots/reminder-modal.png",
+          title: "calendar",
+          text: "add a reminder to your calendar with one tap.",
+          alt: "neobill calendar reminder"
+        },
+        history: {
+          image: "assets/screenshots/history.png",
+          title: "history",
+          text: "keep the full history of your payments.",
+          alt: "neobill payment history"
+        }
+      }
+    };
+
+    const flowImage = document.getElementById("flow-image");
+    const flowSteps = document.querySelectorAll(".flow-step");
+    const flowStepTriggers = document.querySelectorAll(".flow-step-trigger");
+    const flowInlineActions = document.querySelectorAll(".flow-inline-action");
+    const featureImage = document.getElementById("feature-image");
+    const featureTitle = document.getElementById("feature-title");
+    const featureText = document.getElementById("feature-text");
+    const featureButtons = document.querySelectorAll("[data-feature-screen]");
+    const mockAppRoot = document.getElementById("mock-app-root");
+    const handsOnSection = document.getElementById("hands-on");
+    const langButtons = document.querySelectorAll("[data-lang-switch]");
+    const pageDescription = document.getElementById("page-description");
+    const translatableNodes = document.querySelectorAll("[data-i18n], [data-i18n-html], [data-i18n-placeholder], [data-i18n-alt], [data-i18n-aria-label]");
+    const defaultLanguage = localStorage.getItem("neobill-language") || "el";
+    let currentLanguage = defaultLanguage in translations ? defaultLanguage : "el";
+    let activeFlowScreen = "providers";
+    let activeFeatureScreen = "monthly";
+    let hasPlayedHandsOnCursor = false;
+    const mockAppState = {
+      view: "home",
+      expandedMonths: {
+        "2026-08": false,
+        "2026-07": false,
+      },
+      savedExpandedPeriods: {
+        "2026-07": true,
+        "2026-06": false,
+      },
+      reminderBillId: null,
+      paymentBillId: null,
+      paymentCopiedBillId: null,
+      settledBillIds: [],
+    };
+
+    const mockAppData = {
+      el: {
+        updatedLabel: "29/07",
+        months: [
+          {
+            key: "2026-08",
+            label: "Αύγουστος",
+            bills: [
+              {
+                id: "demo-aug-1",
+                provider: "demo",
+                title: "Μαρούσι 45",
+                amount: "61.20€",
+                dueDate: "08/08/2026",
+                code: "rf-mock-0826",
+              },
+              {
+                id: "cosmote-aug-1",
+                provider: "cosmote",
+                title: "6981348908",
+                amount: "95.90€",
+                dueDate: "12/08/2026",
+                code: "rf-cos-1290",
+              },
+            ],
+          },
+          {
+            key: "2026-07",
+            label: "Ιούλιος",
+            bills: [
+              {
+                id: "deyap-jul-1",
+                provider: "ΔΕΥΑΠ",
+                title: "Οδός Δείγματος 14",
+                amount: "16.70€",
+                dueDate: "31/07/2026",
+                code: "rf-water-1670",
+              },
+              {
+                id: "protergia-jul-1",
+                provider: "protergia",
+                title: "Κέντρο 8",
+                amount: "37.53€",
+                dueDate: "30/07/2026",
+                code: "rf-prot-3753",
+              },
+            ],
+          },
+        ],
+        savedPeriods: [
+          {
+            key: "2026-07",
+            label: "Ιούλιος 2026",
+            items: [
+              { id: "hist-1", provider: "ΔΕΥΑΠ", subtitle: "Οδός Δείγματος 14", amount: "16.70€" },
+              { id: "hist-2", provider: "Protergia", subtitle: "Κέντρο 8, Αθήνα", amount: "37.53€" },
+              { id: "hist-3", provider: "Cosmote", subtitle: "Σύνδεση κινητής", amount: "95.90€" },
+            ],
+          },
+          {
+            key: "2026-06",
+            label: "Ιούνιος 2026",
+            items: [
+              { id: "hist-4", provider: "DEMO", subtitle: "Πειραιώς 8", amount: "72.35€" },
+              { id: "hist-5", provider: "DEMO", subtitle: "Μαρούσι 45", amount: "48.90€" },
+            ],
+          },
+        ],
+      },
+      en: {
+        updatedLabel: "07/29",
+        months: [
+          {
+            key: "2026-08",
+            label: "August",
+            bills: [
+              {
+                id: "demo-aug-1",
+                provider: "demo",
+                title: "Marousi 45",
+                amount: "61.20€",
+                dueDate: "08/08/2026",
+                code: "rf-mock-0826",
+              },
+              {
+                id: "cosmote-aug-1",
+                provider: "cosmote",
+                title: "6981348908",
+                amount: "95.90€",
+                dueDate: "12/08/2026",
+                code: "rf-cos-1290",
+              },
+            ],
+          },
+          {
+            key: "2026-07",
+            label: "July",
+            bills: [
+              {
+                id: "deyap-jul-1",
+                provider: "DEYAP",
+                title: "Sample Street 14",
+                amount: "16.70€",
+                dueDate: "07/31/2026",
+                code: "rf-water-1670",
+              },
+              {
+                id: "protergia-jul-1",
+                provider: "protergia",
+                title: "Center 8",
+                amount: "37.53€",
+                dueDate: "07/30/2026",
+                code: "rf-prot-3753",
+              },
+            ],
+          },
+        ],
+        savedPeriods: [
+          {
+            key: "2026-07",
+            label: "July 2026",
+            items: [
+              { id: "hist-1", provider: "DEYAP", subtitle: "Sample Street 14", amount: "16.70€" },
+              { id: "hist-2", provider: "Protergia", subtitle: "Center 8, Athens", amount: "37.53€" },
+              { id: "hist-3", provider: "Cosmote", subtitle: "Mobile line", amount: "95.90€" },
+            ],
+          },
+          {
+            key: "2026-06",
+            label: "June 2026",
+            items: [
+              { id: "hist-4", provider: "DEMO", subtitle: "Peiraios 8", amount: "72.35€" },
+              { id: "hist-5", provider: "DEMO", subtitle: "Marousi 45", amount: "48.90€" },
+            ],
+          },
+        ],
+      },
+    };
+
+    function swapImage(target, nextSrc, nextAlt) {
+      target.classList.add("is-swapping");
+      window.setTimeout(() => {
+        target.src = nextSrc;
+        target.alt = nextAlt;
+        target.classList.remove("is-swapping");
+      }, 180);
+    }
+
+    function activateFlow(key) {
+      const screen = flowScreens[currentLanguage][key];
+      if (!screen) return;
+      activeFlowScreen = key;
+
+      flowSteps.forEach((item) => {
+        item.classList.toggle(
+          "is-active",
+          item.dataset.flowScreen === "mail" ? key === "mail" : key !== "mail",
+        );
+      });
+      flowInlineActions.forEach((action) => {
+        action.classList.toggle("is-active", action.dataset.flowScreen === key);
+      });
+
+      swapImage(flowImage, screen.image, screen.alt);
+    }
+
+    function activateFeature(key) {
+      const screen = featureScreens[currentLanguage][key];
+      if (!screen) return;
+      activeFeatureScreen = key;
+
+      featureButtons.forEach((item) => item.classList.toggle("is-active", item.dataset.featureScreen === key));
+      swapImage(featureImage, screen.image, screen.alt);
+      featureTitle.textContent = screen.title;
+      featureText.textContent = screen.text;
+    }
+
+    function getActiveLanguageData() {
+      return mockAppData[currentLanguage];
+    }
+
+    function getCurrentMonthExpenses() {
+      const languageData = getActiveLanguageData();
+      const openMonth = languageData.months[0];
+      return openMonth.bills
+        .filter((bill) => !mockAppState.settledBillIds.includes(bill.id))
+        .reduce((sum, bill) => sum + Number.parseFloat(bill.amount.replace("€", "")), 0)
+        .toFixed(2);
+    }
+
+    function getSavedPeriods() {
+      const languageData = getActiveLanguageData();
+      const periods = languageData.savedPeriods.map((period) => ({
+        ...period,
+        items: [...period.items],
+      }));
+
+      languageData.months.forEach((month) => {
+        const paidItems = month.bills
+          .filter((bill) => mockAppState.settledBillIds.includes(bill.id))
+          .map((bill) => ({
+            id: `paid-${bill.id}`,
+            provider: bill.provider,
+            subtitle: bill.title,
+            amount: bill.amount,
+          }));
+
+        if (!paidItems.length) return;
+
+        const existingPeriod = periods.find((period) => period.key === month.key);
+        if (existingPeriod) {
+          const existingIds = new Set(existingPeriod.items.map((item) => item.id));
+          paidItems.reverse().forEach((item) => {
+            if (!existingIds.has(item.id)) {
+              existingPeriod.items.unshift(item);
+            }
+          });
+          return;
+        }
+
+        periods.unshift({
+          key: month.key,
+          label: `${month.label} 2026`,
+          items: paidItems,
+        });
+      });
+
+      return periods;
+    }
+
+    function renderMockApp() {
+      if (!mockAppRoot) return;
+
+      const copy = translations[currentLanguage];
+      const data = getActiveLanguageData();
+      const savedPeriods = getSavedPeriods();
+
+      const renderHome = () => `
+        <div class="mock-app-shell">
+          <header class="mock-app-header">
+            <div class="mock-app-brand">
+              <img src="logocol.png" alt="neobill">
+            </div>
+            <strong>${copy.appTitleHome}</strong>
+            <button class="mock-app-folder" data-action="open-saved" aria-label="${copy.appFolderAria}">
+              <img src="assets/folder-app.png" alt="">
+            </button>
+          </header>
+
+          <div class="mock-app-content">
+            <section class="mock-summary-card">
+              <h3>${copy.appMonthlyExpenses}: ${getCurrentMonthExpenses()}€</h3>
+              <div class="mock-summary-line"></div>
+              <p>${copy.appUpdated}: ${data.updatedLabel}</p>
+            </section>
+
+            ${data.months
+              .map((month) => {
+                const isOpen = Boolean(mockAppState.expandedMonths[month.key]);
+                return `
+                  <section class="mock-month-block">
+                    <button class="mock-month-toggle" data-action="toggle-month" data-month-key="${month.key}">
+                      <span>${month.label}</span>
+                      <span class="mock-arrow">${isOpen ? "▲" : "▼"}</span>
+                    </button>
+                    ${
+                      isOpen
+                        ? `<div class="mock-bills-list">
+                            ${month.bills
+                              .map((bill) => {
+                                const isPaid = mockAppState.settledBillIds.includes(bill.id);
+                                return `
+                                  <article class="mock-bill-card ${isPaid ? "is-paid" : ""}">
+                                    <div class="mock-bill-top">
+                                      <span class="mock-provider-badge">
+                                        ${bill.title}
+                                      </span>
+                                      <span class="mock-menu-dots">⋮</span>
+                                    </div>
+                                    <div class="mock-bill-center">
+                                      <div class="mock-provider-wordmark provider-${bill.provider.toLowerCase().replace(/[^a-z0-9]/g, "")}">${bill.provider}</div>
+                                      <strong>${bill.amount}</strong>
+                                      <p>${copy.appDue}: ${bill.dueDate}</p>
+                                    </div>
+                                    <div class="mock-bill-actions">
+                                      <button class="mock-button mock-button-secondary" data-action="open-reminder" data-bill-id="${bill.id}" ${isPaid ? "disabled" : ""}>
+                                        ${copy.appReminder}
+                                      </button>
+                                      <button class="mock-button mock-button-primary" data-action="open-payment" data-bill-id="${bill.id}" ${isPaid ? "disabled" : ""}>
+                                        ${isPaid ? copy.appPaid : copy.appPayment}
+                                      </button>
+                                    </div>
+                                  </article>
+                                `;
+                              })
+                              .join("")}
+                          </div>`
+                        : ""
+                    }
+                  </section>
+                `;
+              })
+              .join("")}
+          </div>
+        </div>
+      `;
+
+      const renderSaved = () => `
+        <div class="mock-app-shell">
+          <header class="mock-app-header">
+            <button class="mock-app-back" data-action="close-saved" aria-label="${copy.appBackAria}">‹</button>
+            <strong>${copy.appTitleSaved}</strong>
+            <div class="mock-app-header-spacer"></div>
+          </header>
+
+          <div class="mock-app-content">
+            <p class="mock-saved-intro">${copy.appSavedInfo}</p>
+            ${savedPeriods
+              .map((period) => {
+                const isOpen = Boolean(mockAppState.savedExpandedPeriods[period.key]);
+                return `
+                  <section class="mock-history-block">
+                    <button class="mock-month-toggle" data-action="toggle-saved-period" data-period-key="${period.key}">
+                      <span>${period.label}</span>
+                      <span class="mock-arrow">${isOpen ? "▲" : "▼"}</span>
+                    </button>
+                    ${
+                      isOpen
+                        ? `<div class="mock-history-list">
+                            ${period.items
+                              .map(
+                                (item) => `
+                                  <article class="mock-history-row">
+                                    <div>
+                                      <strong>${item.provider}</strong>
+                                      <p>${item.subtitle}</p>
+                                    </div>
+                                    <span>${item.amount}</span>
+                                  </article>
+                                `,
+                              )
+                              .join("")}
+                          </div>`
+                        : ""
+                    }
+                  </section>
+                `;
+              })
+              .join("")}
+          </div>
+        </div>
+      `;
+
+      const findBill = () =>
+        data.months.flatMap((month) => month.bills).find((bill) => bill.id === mockAppState.reminderBillId || bill.id === mockAppState.paymentBillId);
+
+      const activeBill = findBill();
+
+      const reminderModal = mockAppState.reminderBillId && activeBill
+        ? `
+          <div class="mock-modal-overlay">
+            <div class="mock-modal-card">
+              <p class="mock-modal-kicker">${copy.appReminderTitle}</p>
+              <h4>${copy.appReminderText}</h4>
+              <span class="mock-due-pill">${copy.appDue}: ${activeBill.dueDate}</span>
+              <p class="mock-modal-copy">${copy.appReminderHint}</p>
+              <div class="mock-modal-actions">
+                <button class="mock-button mock-button-secondary" data-action="close-reminder">${copy.appReminderCancel}</button>
+                <button class="mock-button mock-button-primary" data-action="confirm-reminder">${copy.appReminderConfirm}</button>
+              </div>
+            </div>
+          </div>
+        `
+        : "";
+
+      const paymentModal = mockAppState.paymentBillId && activeBill
+        ? `
+          <div class="mock-modal-overlay">
+            <div class="mock-modal-card">
+              <p class="mock-modal-kicker">${copy.appPaymentTitle}</p>
+              <h4 class="mock-payment-code">${activeBill.code}</h4>
+              <div class="mock-modal-actions">
+                <button class="mock-button mock-button-destructive" data-action="close-payment">${copy.appPaymentCancel}</button>
+                <button class="mock-button mock-button-primary" data-action="copy-payment" data-bill-id="${activeBill.id}">
+                  ${mockAppState.paymentCopiedBillId === activeBill.id ? copy.appPaymentCopied : copy.appPaymentCopy}
+                </button>
+              </div>
+              <div class="mock-modal-actions mock-modal-actions-stack">
+                <button class="mock-button mock-button-secondary" data-action="confirm-payment" data-bill-id="${activeBill.id}">${copy.appPaymentConfirm}</button>
+              </div>
+            </div>
+          </div>
+        `
+        : "";
+
+      mockAppRoot.innerHTML = `
+        <div class="mock-app-wrapper">
+          ${mockAppState.view === "home" ? renderHome() : renderSaved()}
+          ${reminderModal}
+          ${paymentModal}
+          ${mockAppState.view === "home" && !mockAppState.reminderBillId && !mockAppState.paymentBillId ? '<div class="mock-demo-cursor" aria-hidden="true"></div>' : ""}
+        </div>
+      `;
+    }
+
+    function applyTranslations(lang) {
+      const copy = translations[lang];
+      if (!copy) return;
+
+      currentLanguage = lang;
+      document.documentElement.lang = lang;
+      pageDescription.setAttribute("content", copy.pageDescription);
+
+      translatableNodes.forEach((node) => {
+        if (node.dataset.i18n && copy[node.dataset.i18n]) {
+          node.textContent = copy[node.dataset.i18n];
+        }
+
+        if (node.dataset.i18nHtml && copy[node.dataset.i18nHtml]) {
+          node.innerHTML = copy[node.dataset.i18nHtml];
+        }
+
+        if (node.dataset.i18nPlaceholder && copy[node.dataset.i18nPlaceholder]) {
+          node.setAttribute("placeholder", copy[node.dataset.i18nPlaceholder]);
+        }
+
+        if (node.dataset.i18nAlt && copy[node.dataset.i18nAlt]) {
+          node.setAttribute("alt", copy[node.dataset.i18nAlt]);
+        }
+
+        if (node.dataset.i18nAriaLabel && copy[node.dataset.i18nAriaLabel]) {
+          node.setAttribute("aria-label", copy[node.dataset.i18nAriaLabel]);
+        }
+      });
+
+      langButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.langSwitch === lang);
+        button.setAttribute("aria-pressed", String(button.dataset.langSwitch === lang));
+      });
+
+      activateFlow(activeFlowScreen);
+      activateFeature(activeFeatureScreen);
+      renderMockApp();
+      localStorage.setItem("neobill-language", lang);
+    }
+
+    flowStepTriggers.forEach((button) => {
+      button.addEventListener("click", () => activateFlow(button.dataset.flowScreen));
+    });
+
+    flowInlineActions.forEach((action) => {
+      action.addEventListener("click", () => activateFlow(action.dataset.flowScreen));
+    });
+
+    featureButtons.forEach((button) => {
+      button.addEventListener("click", () => activateFeature(button.dataset.featureScreen));
+    });
+
+    mockAppRoot?.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-action]");
+      if (!trigger) return;
+
+      const action = trigger.dataset.action;
+      const billId = trigger.dataset.billId;
+      const monthKey = trigger.dataset.monthKey;
+      const periodKey = trigger.dataset.periodKey;
+
+      if (action === "open-saved") {
+        mockAppState.view = "saved";
+      }
+
+      if (action === "close-saved") {
+        mockAppState.view = "home";
+      }
+
+      if (action === "toggle-month" && monthKey) {
+        mockAppState.expandedMonths[monthKey] = !mockAppState.expandedMonths[monthKey];
+      }
+
+      if (action === "toggle-saved-period" && periodKey) {
+        mockAppState.savedExpandedPeriods[periodKey] = !mockAppState.savedExpandedPeriods[periodKey];
+      }
+
+      if (action === "open-reminder" && billId) {
+        mockAppState.reminderBillId = billId;
+      }
+
+      if (action === "close-reminder") {
+        mockAppState.reminderBillId = null;
+      }
+
+      if (action === "confirm-reminder") {
+        mockAppState.reminderBillId = null;
+      }
+
+      if (action === "open-payment" && billId) {
+        mockAppState.paymentBillId = billId;
+        mockAppState.paymentCopiedBillId = null;
+      }
+
+      if (action === "close-payment") {
+        mockAppState.paymentBillId = null;
+        mockAppState.paymentCopiedBillId = null;
+      }
+
+      if (action === "confirm-payment" && billId) {
+        if (!mockAppState.settledBillIds.includes(billId)) {
+          mockAppState.settledBillIds.push(billId);
+        }
+        mockAppState.paymentBillId = null;
+        mockAppState.paymentCopiedBillId = null;
+      }
+
+      if (action === "copy-payment" && billId) {
+        mockAppState.paymentCopiedBillId = billId;
+      }
+
+      renderMockApp();
+    });
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => applyTranslations(button.dataset.langSwitch));
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+    const handsOnObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === handsOnSection) {
+            if (entry.isIntersecting && !hasPlayedHandsOnCursor) {
+              handsOnSection.classList.add("is-engaged");
+              hasPlayedHandsOnCursor = true;
+              window.setTimeout(() => {
+                handsOnSection?.classList.remove("is-engaged");
+              }, 4700);
+              return;
+            }
+
+            if (!entry.isIntersecting) {
+              handsOnSection.classList.remove("is-engaged");
+            }
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    if (handsOnSection) {
+      handsOnObserver.observe(handsOnSection);
+    }
+
+    const heroTilt = document.getElementById("hero-tilt");
+    if (heroTilt) {
+      heroTilt.addEventListener("pointermove", (event) => {
+        const rect = heroTilt.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 9;
+        const y = ((event.clientY - rect.top) / rect.height - 0.5) * -9;
+        heroTilt.style.setProperty("--tilt-x", x.toFixed(2) + "deg");
+        heroTilt.style.setProperty("--tilt-y", y.toFixed(2) + "deg");
+      });
+
+      heroTilt.addEventListener("pointerleave", () => {
+        heroTilt.style.setProperty("--tilt-x", "0deg");
+        heroTilt.style.setProperty("--tilt-y", "0deg");
+      });
+    }
+
+    document.getElementById("notify-form").addEventListener("submit", () => {
+      document.getElementById("success-message").hidden = false;
+      document.getElementById("email-input").value = "";
+    });
+
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    applyTranslations(currentLanguage);
+  </script>
 </body>
 </html>
