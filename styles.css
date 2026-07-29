@@ -32,7 +32,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Manrope", "Helvetica Neue", sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(55, 183, 195, 0.14), transparent 28%),
@@ -113,8 +113,8 @@ input {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .brand img {
@@ -188,14 +188,13 @@ input {
 .hands-on h2,
 .cta h2 {
   margin: 0;
-  font-size: clamp(3.15rem, 6.6vw, 5.95rem);
-  line-height: 0.9;
-  letter-spacing: -0.07em;
-  font-weight: 700;
+  font-size: clamp(2.75rem, 5.7vw, 5.1rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 .flow-step p,
-.flow-note p,
 .hands-on-text,
 .hands-on-note p,
 .cta-links,
@@ -217,10 +216,12 @@ input {
   align-items: center;
   justify-content: center;
   min-height: 50px;
-  padding: 0 22px;
-  border-radius: 999px;
+  padding: 0 24px;
+  border-radius: 26px;
   border: 1px solid transparent;
-  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
   transition: transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
 }
 
@@ -230,13 +231,14 @@ input {
 
 .button-primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-  box-shadow: 0 14px 32px rgba(55, 183, 195, 0.22);
+  background: var(--app-primary);
+  box-shadow: none;
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: var(--line);
+  color: #fff;
+  background: var(--app-secondary);
+  border-color: transparent;
 }
 
 .hero-visual {
@@ -310,7 +312,7 @@ input {
 .features h2,
 .hands-on h2,
 .cta h2 {
-  font-size: clamp(2.8rem, 6vw, 5.4rem);
+  font-size: clamp(2.35rem, 4.8vw, 4.35rem);
   margin-bottom: 40px;
 }
 
@@ -321,15 +323,54 @@ input {
   align-items: start;
   padding: 34px 0;
   border-bottom: 1px solid rgba(23, 52, 60, 0.08);
-  cursor: pointer;
   transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
 .flow-step h3 {
   margin: 0 0 8px;
-  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
-  font-weight: 600;
-  letter-spacing: -0.04em;
+}
+
+.flow-step-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: clamp(1.32rem, 2.15vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.flow-step-trigger::after {
+  content: "->";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(55, 183, 195, 0.12);
+  color: var(--accent-strong);
+  font-size: 1.25rem;
+  letter-spacing: 0;
+  transform: translateX(0);
+  transition: transform 0.24s ease, background 0.24s ease;
+}
+
+.flow-step-trigger:hover::after,
+.flow-step-trigger:focus-visible::after {
+  background: rgba(55, 183, 195, 0.2);
+  transform: translateX(6px);
+}
+
+.flow-step-trigger:focus-visible,
+.flow-detail-chip:focus-visible {
+  outline: 2px solid rgba(55, 183, 195, 0.55);
+  outline-offset: 5px;
 }
 
 .flow-step p {
@@ -346,6 +387,7 @@ input {
 
 .flow-detail-switch {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0 8px;
 }
@@ -406,18 +448,16 @@ input {
   transform: scale(0.985);
 }
 
-.flow-note,
 .hands-on-note {
   margin-top: 18px;
   text-align: center;
 }
 
-.flow-note strong,
 .hands-on-note strong {
   display: block;
   font-size: 1.02rem;
   margin-bottom: 6px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .features {
@@ -426,6 +466,14 @@ input {
   gap: 30px;
   align-items: center;
   padding: 80px 0 170px;
+}
+
+.features-copy {
+  justify-self: end;
+}
+
+.features-visual {
+  justify-self: start;
 }
 
 .hands-on {
@@ -484,8 +532,8 @@ input {
 .mock-app-header strong {
   text-align: center;
   font-size: 1.72rem;
-  letter-spacing: -0.04em;
-  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 .mock-app-brand img {
@@ -501,6 +549,11 @@ input {
   justify-self: end;
 }
 
+.mock-app-folder {
+  width: 52px;
+  height: 52px;
+}
+
 .mock-app-folder,
 .mock-app-back {
   border: 0;
@@ -514,8 +567,8 @@ input {
 }
 
 .mock-app-folder img {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
@@ -547,16 +600,21 @@ input {
 }
 
 .mock-summary-card {
-  padding: 24px 20px;
-  margin-bottom: 18px;
+  padding: 28px 20px 30px;
+  margin: 8px 2px 26px;
   text-align: center;
+  border: 1px solid rgba(55, 183, 195, 0.28);
+  border-radius: 12px 12px 48px 48px;
+  box-shadow:
+    0 16px 36px rgba(12, 32, 44, 0.11),
+    0 0 0 1px rgba(55, 183, 195, 0.06);
 }
 
 .mock-summary-card h3 {
   margin: 0;
   font-size: 1.72rem;
-  letter-spacing: -0.04em;
-  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 .mock-summary-card p {
@@ -565,9 +623,9 @@ input {
 }
 
 .mock-summary-line {
-  width: 160px;
+  width: min(54%, 174px);
   height: 5px;
-  margin: 14px auto 0;
+  margin: 16px auto 0;
   border-radius: 999px;
   background: var(--accent);
 }
@@ -631,9 +689,9 @@ input {
   border-radius: 999px;
   padding: 0 12px;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 500;
   background: #eef4f6;
-  color: var(--text);
+  color: #2f3f45;
 }
 
 .provider-demo { color: #b56a17; }
@@ -656,14 +714,14 @@ input {
   margin: 0 0 16px;
   font-size: 1.28rem;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .mock-provider-wordmark {
   font-size: 1.92rem;
   line-height: 1;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   text-transform: lowercase;
   margin-bottom: 14px;
 }
@@ -671,8 +729,8 @@ input {
 .mock-bill-center strong {
   display: block;
   font-size: 1.8rem;
-  letter-spacing: -0.04em;
-  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 .mock-bill-center p {
@@ -701,7 +759,7 @@ input {
   cursor: pointer;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .mock-button:disabled {
@@ -754,7 +812,7 @@ input {
 
 .mock-history-row span {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent-strong);
 }
 
@@ -784,7 +842,7 @@ input {
   margin: 0 0 10px;
   color: var(--app-primary);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.01em;
 }
 
@@ -793,7 +851,7 @@ input {
   font-size: 19px;
   line-height: 28px;
   font-weight: 400;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 .mock-payment-code {
@@ -809,7 +867,7 @@ input {
   background: var(--app-info-soft);
   color: var(--app-info-text);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .mock-demo-cursor {
@@ -953,7 +1011,7 @@ input {
 
 .cta-links a {
   color: var(--accent-deep);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .footer {
@@ -1030,12 +1088,11 @@ input {
   .gallery h2,
   .hands-on h2,
   .cta h2 {
-    font-size: clamp(2.8rem, 13vw, 4.6rem);
+    font-size: clamp(2.25rem, 10.5vw, 3.45rem);
   }
 
   .hero-text,
   .flow-step p,
-  .flow-note p,
   .hands-on-text,
   .hands-on-note p,
   .cta-links {
@@ -1043,8 +1100,7 @@ input {
   }
 
   .hero-visual {
-    min-height: 360px;
-    margin-top: -10px;
+    display: none;
   }
 
   .hero-phone-main {
@@ -1059,14 +1115,9 @@ input {
     bottom: 6%;
   }
 
+  .hero-stage,
   .quiet-chip {
-    font-size: 0.84rem;
-    padding: 12px 14px;
-  }
-
-  .quiet-chip-top {
-    left: 8%;
-    top: 20%;
+    display: none;
   }
 
   .flow,
@@ -1094,18 +1145,21 @@ input {
 
   .flow-step h3 {
     margin-bottom: 6px;
-    font-size: 1.85rem;
+  }
+
+  .flow-step-trigger {
+    font-size: 1.55rem;
+  }
+
+  .flow-step-trigger::after {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
   }
 
   .flow-detail-switch {
     margin: 0 0 4px;
-    overflow-x: auto;
     padding-bottom: 4px;
-    scrollbar-width: none;
-  }
-
-  .flow-detail-switch::-webkit-scrollbar {
-    display: none;
   }
 
   .flow-detail-chip {
@@ -1121,7 +1175,6 @@ input {
     width: min(100%, 350px);
   }
 
-  .flow-note,
   .hands-on-note {
     margin-top: 14px;
   }

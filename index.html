@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="styles.css">
@@ -75,14 +75,22 @@
                 <button class="flow-detail-chip is-active" type="button" data-flow-screen="providers" data-i18n="flowDetailProviders">πάροχος</button>
                 <button class="flow-detail-chip" type="button" data-flow-screen="login" data-i18n="flowDetailLogin">συνδέσου</button>
               </div>
-              <h3 data-i18n="flowStepCredentialsTitle">μέσω στοιχείων παρόχου</h3>
+              <h3>
+                <button class="flow-step-trigger" type="button" data-flow-screen="providers">
+                  <span data-i18n="flowStepCredentialsTitle">μέσω στοιχείων παρόχου</span>
+                </button>
+              </h3>
               <p data-i18n="flowStepCredentialsText">διάλεξε τον πάροχό σου.</p>
             </div>
           </article>
 
           <article class="flow-step reveal" data-flow-screen="mail">
             <div>
-              <h3 data-i18n="flowStepMailTitle">forwarding email</h3>
+              <h3>
+                <button class="flow-step-trigger" type="button" data-flow-screen="mail">
+                  <span data-i18n="flowStepMailTitle">forwarding email</span>
+                </button>
+              </h3>
               <p data-i18n="flowStepMailText">προώθησε μας τον λογαριασμό που έλαβες στο mail σου από τον πάροχο.</p>
             </div>
           </article>
@@ -94,20 +102,28 @@
               <div class="device-screen">
                 <img
                   id="flow-image"
-                  src="assets/screenshots/onboarding-method.png"
-                  alt="Onboarding flow neobill"
+                  src="assets/screenshots/provider-list.png"
+                  alt="Λίστα παρόχων neobill"
                 >
               </div>
-            </div>
-            <div class="flow-note">
-              <strong id="flow-title">διάλεξε τρόπο</strong>
-              <p id="flow-text">credentials ή mail.</p>
             </div>
           </div>
         </div>
       </section>
 
       <section class="features reveal">
+        <div class="features-visual">
+          <div class="device-frame device-frame-large">
+            <div class="device-screen">
+              <img
+                id="feature-image"
+                src="assets/screenshots/home-dashboard.png"
+                alt="Λειτουργίες neobill"
+              >
+            </div>
+          </div>
+        </div>
+
         <div class="features-copy">
           <h2 data-i18n="featuresHeading">Βασικές λειτουργίες</h2>
           <div class="preview-controls" role="tablist" aria-label="Feature screens" data-i18n-aria-label="featuresAria">
@@ -121,24 +137,11 @@
             <p id="feature-text">όλοι οι λογαριασμοί σου συγκεντρωμένοι ανά μήνα.</p>
           </div>
         </div>
-
-        <div class="features-visual">
-          <div class="device-frame device-frame-large">
-            <div class="device-screen">
-              <img
-                id="feature-image"
-                src="assets/screenshots/home-dashboard.png"
-                alt="Λειτουργίες neobill"
-              >
-            </div>
-          </div>
-        </div>
       </section>
 
       <section id="hands-on" class="hands-on reveal">
         <div class="hands-on-copy">
-          <p class="section-mark" data-i18n="previewMark">δοκίμασε</p>
-          <h2 data-i18n="previewHeading">πιάσε το app.</h2>
+          <h2 data-i18n="previewHeading">δοκίμασε το app.</h2>
         </div>
 
         <div class="hands-on-visual hands-on-visual-full">
@@ -153,6 +156,7 @@
       <section id="cta" class="cta reveal">
         <div class="cta-card">
           <h2 data-i18n="ctaHeading">μπες πρώτος.</h2>
+          <p class="cta-text" data-i18n="ctaText">Το app είναι σε επίπεδο δοκιμών. Άφησε το email σου για να γίνεις από τους πρώτους testers.</p>
 
           <form
             id="notify-form"
@@ -216,8 +220,7 @@
         featureChipPayment: "πληρωμή",
         featureChipCalendar: "calendar",
         featureChipHistory: "ιστορικό",
-        previewMark: "δοκίμασε",
-        previewHeading: "πιάσε το app.",
+        previewHeading: "δοκίμασε το app.",
         appTitleHome: "Αρχική",
         appTitleSaved: "Αποθηκευμένα",
         appFolderAria: "Άνοιγμα αποθηκευμένων",
@@ -240,6 +243,7 @@
         appPaymentCancel: "Άκυρο",
         appSavedInfo: "Ιστορικό όλων των πληρωμών σου.",
         ctaHeading: "μπες πρώτος.",
+        ctaText: "Το app είναι σε επίπεδο δοκιμών. Άφησε το email σου για να γίνεις από τους πρώτους testers.",
         emailPlaceholder: "email",
         ctaButton: "notify me",
         ctaSuccess: "στάλθηκε.",
@@ -270,8 +274,7 @@
         featureChipPayment: "payment",
         featureChipCalendar: "calendar",
         featureChipHistory: "history",
-        previewMark: "try it",
-        previewHeading: "touch the app.",
+        previewHeading: "try the app.",
         appTitleHome: "Home",
         appTitleSaved: "Saved",
         appFolderAria: "Open saved bills",
@@ -294,6 +297,7 @@
         appPaymentCancel: "Cancel",
         appSavedInfo: "Full history of your payments.",
         ctaHeading: "get in early.",
+        ctaText: "The app is in testing. Leave your email to become one of the first testers.",
         emailPlaceholder: "email",
         ctaButton: "notify me",
         ctaSuccess: "sent.",
@@ -413,9 +417,8 @@
     };
 
     const flowImage = document.getElementById("flow-image");
-    const flowTitle = document.getElementById("flow-title");
-    const flowText = document.getElementById("flow-text");
-    const flowSteps = document.querySelectorAll("[data-flow-screen]");
+    const flowSteps = document.querySelectorAll(".flow-step");
+    const flowStepTriggers = document.querySelectorAll(".flow-step-trigger");
     const flowDetailChips = document.querySelectorAll(".flow-detail-chip");
     const featureImage = document.getElementById("feature-image");
     const featureTitle = document.getElementById("feature-title");
@@ -611,8 +614,6 @@
       });
 
       swapImage(flowImage, screen.image, screen.alt);
-      flowTitle.textContent = screen.title;
-      flowText.textContent = screen.text;
     }
 
     function activateFeature(key) {
@@ -723,14 +724,13 @@
                                 return `
                                   <article class="mock-bill-card ${isPaid ? "is-paid" : ""}">
                                     <div class="mock-bill-top">
-                                      <span class="mock-provider-badge provider-${bill.provider.toLowerCase().replace(/[^a-z0-9]/g, "")}">
-                                        ${bill.provider}
+                                      <span class="mock-provider-badge">
+                                        ${bill.title}
                                       </span>
                                       <span class="mock-menu-dots">⋮</span>
                                     </div>
                                     <div class="mock-bill-center">
-                                      <h4>${bill.title}</h4>
-                                      <div class="mock-provider-wordmark">${bill.provider}</div>
+                                      <div class="mock-provider-wordmark provider-${bill.provider.toLowerCase().replace(/[^a-z0-9]/g, "")}">${bill.provider}</div>
                                       <strong>${bill.amount}</strong>
                                       <p>${copy.appDue}: ${bill.dueDate}</p>
                                     </div>
@@ -896,27 +896,13 @@
       localStorage.setItem("neobill-language", lang);
     }
 
-    flowSteps.forEach((step) => {
-      step.addEventListener("mouseenter", () => activateFlow(step.dataset.flowScreen));
-      step.addEventListener("click", () => activateFlow(step.dataset.flowScreen));
+    flowStepTriggers.forEach((button) => {
+      button.addEventListener("click", () => activateFlow(button.dataset.flowScreen));
     });
 
     flowDetailChips.forEach((chip) => {
       chip.addEventListener("click", () => activateFlow(chip.dataset.flowScreen));
     });
-
-    const flowObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activateFlow(entry.target.dataset.flowScreen);
-          }
-        });
-      },
-      { threshold: 0.65 }
-    );
-
-    flowSteps.forEach((step) => flowObserver.observe(step));
 
     featureButtons.forEach((button) => {
       button.addEventListener("click", () => activateFeature(button.dataset.featureScreen));
