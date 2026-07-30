@@ -1031,6 +1031,7 @@ input {
 .footer {
   padding-bottom: 34px;
   color: var(--muted);
+  text-align: center;
 }
 
 .reveal {
